@@ -8,50 +8,65 @@ namespace Space_Invaders
 {
     class MenuOption
     {
-
+        /// <summary>
+        /// Default constroctor
+        /// </summary>
         public MenuOption()
         {
 
         }
 
-
+        /// <summary>
+        /// des variables (attributs)
+        /// play
+        /// son
+        /// difficulté
+        /// scores
+        /// exit?
+        /// </summary>
         private const string play = @"     
 
 
-                         _ __  _        _  _ 
-                        | '_ \| | __ _ | || |
-                        | .__/| |/ _` | \_. |
-                        |_|   |_|\__/_| |__/            
+                                                     _ __  _        _  _ 
+                                                    | '_ \| | __ _ | || |
+                                                    | .__/| |/ _` | \_. |
+                                                    |_|   |_|\__/_| |__/            
         ";
 
-        private const string son = @" 
-                         ___ ___  _ _  
-                        (_-// _ \| ' \ 
-                        /__/\___/|_||_|           
+        private const string SON = @" 
+                                                     ___ ___  _ _  
+                                                    (_-// _ \| ' \ 
+                                                    /__/\___/|_||_|           
         ";
 
-        private const string difficult = @"
-                            _  _   __   __  _            _  _   
-                         __| |(_) / _| / _|(_) __  _  _ | || |_ 
-                        / _` || ||  _||  _|| |/ _|| || || ||  _|
-                        \__/_||_||_|  |_|  |_|\__| \_._||_| \__|           
+        private const string DIFFICULTE = @"
+                                                        _  _   __   __  _            _  _   
+                                                     __| |(_) / _| / _|(_) __  _  _ | || |_ 
+                                                    / _` || ||  _||  _|| |/ _|| || || ||  _|
+                                                    \__/_||_||_|  |_|  |_|\__| \_._||_| \__|           
         ";
 
-        private const string scores = @"                                         
-                         ___ __  ___  _ _  ___  ___
-                        (_-// _|/ _ \| '_|/ -_)(_-/
-                        /__/\__|\___/|_|  \___|/__/        
+        private const string SCORES = @"                                         
+                                                     ___ __  ___  _ _  ___  ___
+                                                    (_-// _|/ _ \| '_|/ -_)(_-/
+                                                    /__/\__|\___/|_|  \___|/__/        
         ";
 
-        private const string exit = @"
-                                   _  _     ___    
-                         ___ __ __(_)| |_  |__ \   
-                        / -_)\ \ /| ||  _|   /_/   
-                        \___|/_\_\|_| \__|  (_)              
+        private const string EXIT = @"
+                                                               _  _     ___    
+                                                     ___ __ __(_)| |_  |__ \   
+                                                    / -_)\ \ /| ||  _|   /_/   
+                                                    \___|/_\_\|_| \__|  (_)              
         ";
 
 
-        public void TheTitre()
+
+
+
+        /// <summary>
+        /// methode qui affiche le titre
+        /// </summary>
+        public void TheTitle()
         {
             Console.ForegroundColor = ConsoleColor.Green;
 
@@ -65,16 +80,21 @@ namespace Space_Invaders
 
         }
 
+        /// <summary>
+        /// methode qui affiche le menu principale
+        /// </summary>
         public void PrancipalMenu()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-
             Console.WriteLine(play);
-            Console.WriteLine(son);
-            Console.WriteLine(difficult);
-            Console.WriteLine(scores);
-            Console.WriteLine(exit);
+            Console.WriteLine(SON);
+            Console.WriteLine(DIFFICULTE);
+            Console.WriteLine(SCORES);
+            Console.WriteLine(EXIT);
         }
+
+
+
         
 
 

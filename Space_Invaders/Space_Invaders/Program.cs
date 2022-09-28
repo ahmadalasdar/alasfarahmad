@@ -15,8 +15,8 @@ namespace Space_Invaders
             MenuOption test = new MenuOption();
 
 
-            // tester le menu
-            test.TheTitre();
+            // tester le titre et le menu
+            test.TheTitle();
             test.PrancipalMenu();
             Console.ReadLine();
 
