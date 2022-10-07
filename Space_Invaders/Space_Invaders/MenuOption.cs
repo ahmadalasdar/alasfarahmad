@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Space_Invaders
 {
-    class MenuOption
+    public class MenuOption
     {
         /// <summary>
         /// Default constroctor
