@@ -12,7 +12,7 @@ namespace UnitTestSpace_Invaders
         /// premier test
         /// </summary>
         [TestMethod]
-        public void TestMethod1()
+        public void TestIfMenuIsNotNull()
         {
             //Act
 
@@ -28,7 +28,7 @@ namespace UnitTestSpace_Invaders
         /// 
         /// </summary>
         [TestMethod]
-        public void TestMethod2()
+        public void TestTheHealthOfWall()
         {
             //Act
 
@@ -50,7 +50,7 @@ namespace UnitTestSpace_Invaders
         /// 
         /// </summary>
         [TestMethod]
-        public void TestMethod3()
+        public void TestIfTheShootToucheTheAlien()
         {
             //Act
             Aliens firestAlien = new Aliens();
@@ -70,7 +70,7 @@ namespace UnitTestSpace_Invaders
         /// 
         /// </summary>
         [TestMethod()]
-        public void TestMethod4()
+        public void TestIfTheCanonWasHit()
         {
 
             Canon myCanon = new Canon();

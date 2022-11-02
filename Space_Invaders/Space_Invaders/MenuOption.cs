@@ -26,7 +26,6 @@ namespace Space_Invaders
         /// </summary>
         private const string play = @"     
 
-
                                                      _ __  _        _  _ 
                                                     | '_ \| | __ _ | || |
                                                     | .__/| |/ _` | \_. |
@@ -46,7 +45,8 @@ namespace Space_Invaders
                                                     \__/_||_||_|  |_|  |_|\__| \_._||_| \__|           
         ";
 
-        private const string SCORES = @"                                         
+        private const string SCORES = @"          
+
                                                      ___ __  ___  _ _  ___  ___
                                                     (_-// _|/ _ \| '_|/ -_)(_-/
                                                     /__/\__|\___/|_|  \___|/__/        
@@ -59,6 +59,9 @@ namespace Space_Invaders
                                                     \___|/_\_\|_| \__|  (_)              
         ";
 
+
+        public int cursorY = 10;                // Position de Y pour le cursor 
+        public int cursorX = 35;                // Position de X pour le cursor
 
 
 
@@ -85,12 +88,141 @@ namespace Space_Invaders
         /// </summary>
         public void PrancipalMenu()
         {
+            int i = 0;
+            Console.Clear();
+            TheTitle();
             Console.ForegroundColor = ConsoleColor.Yellow;
+
             Console.WriteLine(play);
             Console.WriteLine(SON);
             Console.WriteLine(DIFFICULTE);
             Console.WriteLine(SCORES);
             Console.WriteLine(EXIT);
+
+            // switch qui s'occupe de ce que l'utilisateur a choisi du Menu
+            switch (Deplacement(i))
+            {
+                case 1:
+                    Console.Clear();
+                    break;
+
+                case 2:
+                    Console.Clear();
+                    break;
+
+                case 3:
+                    Console.Clear();
+                    break;
+
+                case 4:
+                    Console.Clear();
+                    Console.Write(SCORES);
+                    break;
+
+                case 5:
+
+                    Environment.Exit(0);
+
+                    break;
+
+            }
+
+
+        }
+
+        /// <summary>
+        /// methode qui fait le deplacement
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns> la valeur de choisir </returns>
+        public int Deplacement(int i)
+        {
+
+            Console.SetCursorPosition(cursorX, cursorY);
+            Console.Write("==>");
+
+            while (true)
+            {
+
+                ConsoleKeyInfo theKey = Console.ReadKey(true);
+
+                // si on tape sur la flèche de bas
+                if(theKey.Key == ConsoleKey.DownArrow)
+                {
+                    // si y est plus que 32 on bloque
+                    if(cursorY > 32)
+                    {
+                        Console.SetCursorPosition(cursorX, cursorY);
+                        Console.Write("==>");
+                    }
+                    // sinon on descend
+                    else
+                    {
+                        Console.SetCursorPosition(cursorX, cursorY);
+                        Console.Write("   ");
+                        cursorY += 6;
+                        Console.SetCursorPosition(cursorX, cursorY);
+                        Console.Write("==>");
+                    }
+                }
+
+                // si on tape sur la flèche de haut
+                if (theKey.Key == ConsoleKey.UpArrow)
+                {
+                    // si y est moins que 11 on bloque
+                    if (cursorY < 11)
+                    {
+                        Console.SetCursorPosition(cursorX, cursorY);
+                        Console.Write("==>");
+                    }
+                    // sinon on monte
+                    else
+                    {
+                        Console.SetCursorPosition(cursorX, cursorY);
+                        Console.Write("   ");
+                        cursorY -= 6;
+                        Console.SetCursorPosition(cursorX, cursorY);
+                        Console.Write("==>");
+                    }
+                }
+
+                // si on tape sur Enter
+
+                if(theKey.Key == ConsoleKey.Enter && cursorY == 10)
+                {
+                    i = 1;
+                    return i;
+                }
+
+                if (theKey.Key == ConsoleKey.Enter && cursorY == 16)
+                {
+                    i = 2;
+                    return i;
+                }
+
+                if (theKey.Key == ConsoleKey.Enter && cursorY == 22)
+                {
+                    i = 3;
+                    return i;
+                }
+
+                if (theKey.Key == ConsoleKey.Enter && cursorY == 28)
+                {
+                    i = 4;
+                    return i;
+                }
+
+                if (theKey.Key == ConsoleKey.Enter && cursorY == 34)
+                {
+                    i = 5;
+                    return i;
+                }
+
+
+
+
+            }
+
         }
 
 
