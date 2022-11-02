@@ -59,6 +59,22 @@ namespace Space_Invaders
                                                     \___|/_\_\|_| \__|  (_)              
         ";
 
+        private const string EASY = @"
+                                                      __            _  _      
+                                                     / _| __ _  __ (_)| | ___ 
+                                                    |  _|/ _` |/ _|| || |/ -_)
+                                                    |_|  \__/_|\__||_||_|\___|
+           
+        ";
+
+        private const string HARD = @"
+                                                     ___   _   __   __  _      _  _      
+                                                    |   \ (_) / _| / _|(_) __ (_)| | ___ 
+                                                    | |) || ||  _||  _|| |/ _|| || |/ -_)
+                                                    |___/ |_||_|  |_|  |_|\__||_||_|\___|
+            
+        ";
+
 
         public int cursorY = 10;                // Position de Y pour le cursor 
         public int cursorX = 35;                // Position de X pour le cursor
@@ -111,7 +127,7 @@ namespace Space_Invaders
                     break;
 
                 case 3:
-                    Console.Clear();
+                    MenuDifficult();
                     break;
 
                 case 4:
@@ -186,7 +202,7 @@ namespace Space_Invaders
                     }
                 }
 
-                // si on tape sur Enter
+                // si on tape sur Enter et on retune des valeurs
 
                 if(theKey.Key == ConsoleKey.Enter && cursorY == 10)
                 {
@@ -225,9 +241,73 @@ namespace Space_Invaders
 
         }
 
+        public void MenuDifficult()
+        {
+            Console.Clear();
+            Console.WriteLine(DIFFICULTE);
+            Console.WriteLine("");
+
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.WriteLine(EASY);
+            Console.WriteLine(HARD);
+
+            int Y = 10;                // Position de Y pour le cursor de Sous-Menu
+            int X = 35;                // Position de X pour le cursor de Sous-Menu
+            Console.SetCursorPosition(X, Y);
+            Console.Write("==>");
+
+            while (true)
+            {
+
+                ConsoleKeyInfo theKey = Console.ReadKey(true);
+
+                // si on tape sur la flèche de bas
+                if (theKey.Key == ConsoleKey.DownArrow)
+                {
+                    // si y est plus que 10 on bloque
+                    if (Y > 10)
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
+                    // sinon on descend
+                    else
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("   ");
+                        Y += 7;
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
+                }
+
+                // si on tape sur la flèche de haut
+                if (theKey.Key == ConsoleKey.UpArrow)
+                {
+                    // si y est moins que 11 on bloque
+                    if (Y < 11)
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
+                    // sinon on monte
+                    else
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("   ");
+                        Y -= 7;
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
+                }
 
 
-        
+            }
+
+
+
+        }
 
 
 
