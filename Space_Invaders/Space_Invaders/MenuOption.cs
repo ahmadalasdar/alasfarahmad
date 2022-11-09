@@ -111,43 +111,47 @@ namespace Space_Invaders
         /// </summary>
         public void PrancipalMenu()
         {
-            int i = 0;
-            Console.Clear();
-            TheTitle();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-
-            Console.WriteLine(play);
-            Console.WriteLine(SON);
-            Console.WriteLine(DIFFICULTE);
-            Console.WriteLine(SCORES);
-            Console.WriteLine(EXIT);
-
-            // switch qui s'occupe de ce que l'utilisateur a choisi du Menu
-            switch (Deplacement(i))
+            while (true)
             {
-                case 1:
-                    Console.Clear();
-                    break;
+                int i = 0;
+                Console.Clear();
+                TheTitle();
+                Console.ForegroundColor = ConsoleColor.Yellow;
 
-                case 2:
-                    Console.Clear();
-                    break;
+                Console.WriteLine(play);
+                Console.WriteLine(SON);
+                Console.WriteLine(DIFFICULTE);
+                Console.WriteLine(SCORES);
+                Console.WriteLine(EXIT);
 
-                case 3:
-                    MenuDifficult();
-                    break;
+                // switch qui s'occupe de ce que l'utilisateur a choisi du Menu
+                switch (Deplacement(i))
+                {
+                    case 1:
+                        Console.Clear();
+                        break;
 
-                case 4:
-                    Console.Clear();
-                    Console.Write(SCORES);
-                    break;
+                    case 2:
+                        Console.Clear();
+                        break;
 
-                case 5:
+                    case 3:
+                        MenuDifficult();
+                        break;
 
-                    Environment.Exit(0);
+                    case 4:
+                        Console.Clear();
+                        Console.Write(SCORES);
+                        Console.ReadKey();
+                        break;
 
-                    break;
+                    case 5:
 
+                        Environment.Exit(0);
+
+                        break;
+
+                }
             }
 
 
@@ -352,7 +356,7 @@ namespace Space_Invaders
                     }
                 }
 
-
+                // si je presse Enter dans la page de difficult
                 switch (Y)
                 {
                     case 10:
@@ -374,8 +378,9 @@ namespace Space_Invaders
                     case 33:
                         if (theKey.Key == ConsoleKey.Enter && Y == 33)
                         {
+                            Console.SetCursorPosition(cursorX, cursorY);
                             Console.Clear();
-                            PrancipalMenu();
+                            return;
                         }
                         break;
 
