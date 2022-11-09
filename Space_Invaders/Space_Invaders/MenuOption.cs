@@ -76,6 +76,13 @@ namespace Space_Invaders
         ";
 
 
+        private const string BACK = @"                 
+                                                     _           _   
+                                                    | |_ ___ ___| |_ 
+                                                    | . | .'|  _| '_|
+                                                    |___|__,|___|_,_|                 
+        ";
+
         public int cursorY = 10;                // Position de Y pour le cursor 
         public int cursorX = 35;                // Position de X pour le cursor
 
@@ -95,7 +102,7 @@ namespace Space_Invaders
             Console.WriteLine(@"   |  (__ \_| | |__) |   / /\ \   / ./   \_| | |_  \_|     | |   |   \ | |   \ \   / /  / /\ \     | |   \. \ | |_  \_| | |__) | |  (__ \_|");
             Console.WriteLine(@"    '.___\-.  |  ___/   / ____ \  | |        |  _|  _      | |   | |\ \| |    \ \ / /  / ____ \    | |    | | |  _|  _  |  __ /   '.___\-.");
             Console.WriteLine(@"   |\\____) |_| |_    _/ /    \ \_\ \.___.'\_| |___/ |    _| |_ _| |_\   |_    \ ' / _/ /    \ \_ _| |___.' /_| |___/ |_| |  \ \_|\\____) |");
-            Console.WriteLine(@"   |_______.'_____|  |____|  |____|\._____.'_________|   |_____|_____|\____|    \_/ |____|  |____|________.'|_________|____| |___|_______.'");  
+            Console.WriteLine(@"   |_______.'_____|  |____|  |____|\._____.'_________|   |_____|_____|\____|    \_/ |____|  |____|________.'|_________|____| |___|_______.'");
 
         }
 
@@ -163,10 +170,10 @@ namespace Space_Invaders
                 ConsoleKeyInfo theKey = Console.ReadKey(true);
 
                 // si on tape sur la flèche de bas
-                if(theKey.Key == ConsoleKey.DownArrow)
+                if (theKey.Key == ConsoleKey.DownArrow)
                 {
                     // si y est plus que 32 on bloque
-                    if(cursorY > 32)
+                    if (cursorY > 32)
                     {
                         Console.SetCursorPosition(cursorX, cursorY);
                         Console.Write("==>");
@@ -204,7 +211,7 @@ namespace Space_Invaders
 
                 // si on tape sur Enter et on retune des valeurs
 
-                if(theKey.Key == ConsoleKey.Enter && cursorY == 10)
+                if (theKey.Key == ConsoleKey.Enter && cursorY == 10)
                 {
                     i = 1;
                     return i;
@@ -243,22 +250,49 @@ namespace Space_Invaders
 
         public void MenuDifficult()
         {
-            Console.Clear();
-            Console.WriteLine(DIFFICULTE);
-            Console.WriteLine("");
-
-            Console.ForegroundColor = ConsoleColor.White;
-
-            Console.WriteLine(EASY);
-            Console.WriteLine(HARD);
-
             int Y = 10;                // Position de Y pour le cursor de Sous-Menu
             int X = 35;                // Position de X pour le cursor de Sous-Menu
-            Console.SetCursorPosition(X, Y);
-            Console.Write("==>");
-
+            int selected = 0;          // the selected difficulty
             while (true)
             {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine(DIFFICULTE);
+
+                Console.WriteLine("");
+
+
+                if (selected == 1)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                }
+
+                Console.WriteLine(EASY);
+
+                if (selected == 2)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                Console.WriteLine(HARD);
+
+                Console.SetCursorPosition(25, 30);
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine(BACK);
+
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.SetCursorPosition(X, Y);
+                Console.Write("==>");
+
 
                 ConsoleKeyInfo theKey = Console.ReadKey(true);
 
@@ -266,12 +300,20 @@ namespace Space_Invaders
                 if (theKey.Key == ConsoleKey.DownArrow)
                 {
                     // si y est plus que 10 on bloque
-                    if (Y > 10)
+                    if (Y > 32)
                     {
                         Console.SetCursorPosition(X, Y);
                         Console.Write("==>");
                     }
                     // sinon on descend
+                    else if (Y == 17)
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("   ");
+                        Y += 16;
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
                     else
                     {
                         Console.SetCursorPosition(X, Y);
@@ -291,6 +333,14 @@ namespace Space_Invaders
                         Console.SetCursorPosition(X, Y);
                         Console.Write("==>");
                     }
+                    else if (Y == 33)
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("   ");
+                        Y -= 16;
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
                     // sinon on monte
                     else
                     {
@@ -302,6 +352,35 @@ namespace Space_Invaders
                     }
                 }
 
+
+                switch (Y)
+                {
+                    case 10:
+                        if (theKey.Key == ConsoleKey.Enter && Y == 10)
+                        {
+
+                            selected = 1;
+                        }
+
+                        break;
+
+                    case 17:
+                        if (theKey.Key == ConsoleKey.Enter && Y == 17)
+                        {
+
+                            selected = 2;
+                        }
+                        break;
+                    case 33:
+                        if (theKey.Key == ConsoleKey.Enter && Y == 33)
+                        {
+                            Console.Clear();
+                            PrancipalMenu();
+                        }
+                        break;
+
+
+                }
 
             }
 
