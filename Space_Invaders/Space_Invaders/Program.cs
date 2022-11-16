@@ -16,7 +16,7 @@ namespace Space_Invaders
 
 
             // tester le titre et le menu
-            test.TheTitle();
+
             test.PrancipalMenu();
             Console.ReadLine();
 

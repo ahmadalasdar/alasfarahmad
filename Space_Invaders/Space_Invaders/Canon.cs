@@ -18,6 +18,14 @@ namespace Space_Invaders
             "█████"
         };
 
+
+        private static string[] _noSymbol = new string[3]                // tableau du symbole
+        {
+            "     ",
+            "     ",
+            "     "
+        };
+
         /// <summary>
         /// Constructeur
         /// </summary>
@@ -54,5 +62,50 @@ namespace Space_Invaders
         {
             get { return _symbol; }
         }
+
+
+        /// <summary>
+        /// getting le symbole du canon
+        /// </summary>
+        public string[] NoSymbol
+        {
+            get { return _noSymbol; }
+        }
+
+
+        /// <summary>
+        /// Dessiner le Canon
+        /// </summary>
+        public void DrawCanon()
+        {
+            for(int i = 0; i < _symbol.Length; i++)
+            {
+
+                for (int g = 0; g < _symbol[i].Length; g++)
+                {
+                    Console.SetCursorPosition(X + g, Y + i);
+                    Console.WriteLine(Symbol[i][g]);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Delelte Canon
+        /// </summary>
+        public void DeleteCanon()
+        {
+            for (int i = 0; i < _noSymbol.Length; i++)
+            {
+
+                for (int g = 0; g < _noSymbol[i].Length; g++)
+                {
+                    Console.SetCursorPosition(X + g, Y + i);
+                    Console.WriteLine(NoSymbol[i][g]);
+                }
+            }
+        }
+
+
     }
 }

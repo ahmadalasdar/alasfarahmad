@@ -87,6 +87,7 @@ namespace Space_Invaders
         public int cursorX = 35;                // Position de X pour le cursor
         public int selected = 0;                // the selected difficulty
 
+        Game game = new Game();                 // objet game
 
 
 
@@ -405,13 +406,17 @@ namespace Space_Invaders
             Console.Clear();
 
             // initialiser la page
-            Console.SetWindowSize(120, 40);
+            Console.SetWindowSize(145, 50);
 
             // modifier la couleur
             Console.ForegroundColor = ConsoleColor.White;
 
             // demander le nom
-            Console.Write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t Your name : ");
+            Console.Write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t Your name : ");
+
+            game.name = Console.ReadLine();
+
+            game.StartGame();
 
         }
 
