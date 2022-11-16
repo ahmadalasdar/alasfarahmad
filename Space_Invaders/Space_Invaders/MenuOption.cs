@@ -85,6 +85,8 @@ namespace Space_Invaders
 
         public int cursorY = 10;                // Position de Y pour le cursor 
         public int cursorX = 35;                // Position de X pour le cursor
+        public int selected = 0;          // the selected difficulty
+
 
 
 
@@ -256,7 +258,6 @@ namespace Space_Invaders
         {
             int Y = 10;                // Position de Y pour le cursor de Sous-Menu
             int X = 35;                // Position de X pour le cursor de Sous-Menu
-            int selected = 0;          // the selected difficulty
             while (true)
             {
                 Console.Clear();
