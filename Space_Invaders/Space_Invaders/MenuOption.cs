@@ -85,7 +85,7 @@ namespace Space_Invaders
 
         public int cursorY = 10;                // Position de Y pour le cursor 
         public int cursorX = 35;                // Position de X pour le cursor
-        public int selected = 0;          // the selected difficulty
+        public int selected = 0;                // the selected difficulty
 
 
 
@@ -130,7 +130,7 @@ namespace Space_Invaders
                 switch (Deplacement(i))
                 {
                     case 1:
-                        Console.Clear();
+                        Play();
                         break;
 
                     case 2:
@@ -254,6 +254,10 @@ namespace Space_Invaders
 
         }
 
+
+        /// <summary>
+        /// méthode pour la page de difficulté avec le déplacement
+        /// </summary>
         public void MenuDifficult()
         {
             int Y = 10;                // Position de Y pour le cursor de Sous-Menu
@@ -391,6 +395,23 @@ namespace Space_Invaders
             }
 
 
+
+        }
+
+
+        public void Play()
+        {
+            // nettoyer
+            Console.Clear();
+
+            // initialiser la page
+            Console.SetWindowSize(120, 40);
+
+            // modifier la couleur
+            Console.ForegroundColor = ConsoleColor.White;
+
+            // demander le nom
+            Console.Write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t Your name : ");
 
         }
 
