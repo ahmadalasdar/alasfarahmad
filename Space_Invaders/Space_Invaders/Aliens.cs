@@ -16,8 +16,7 @@ namespace Space_Invaders
         public Aliens()
         {
 
-            
-
+           
         }
 
         public int Y

@@ -55,6 +55,7 @@ namespace Space_Invaders
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="_ship"></param>
         public void DeplacementShip(Canon _ship)
         {
 
