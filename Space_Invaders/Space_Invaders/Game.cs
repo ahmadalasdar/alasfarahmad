@@ -16,7 +16,13 @@ namespace Space_Invaders
         public int cursorY = 46;
 
         public const int MIN_X = 0;
-        public const int MAX_X = 145;
+        public const int MAX_X = 145; 
+
+
+        public void AffichageTitre()
+        {
+
+        }
 
 
 
@@ -41,7 +47,9 @@ namespace Space_Invaders
                 Console.WriteLine("Level : ");
                 Console.SetCursorPosition(120, 2);
                 Console.WriteLine("Name : " + name);
-                Console.WriteLine("\n------------------------------------------------------------------------------------------------------------------------------------------------");
+                Console.SetCursorPosition(120, 3);
+                Console.WriteLine("Life : " + "♥♥♥");
+                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------");
 
                 _ship.DrawCanon();
 

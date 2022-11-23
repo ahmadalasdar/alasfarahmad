@@ -8,11 +8,20 @@ namespace Space_Invaders
 {
     public class Aliens
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private int _y;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private int _x;
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         private static string[] _symbol = new string[5]                // tableau du symbole
         {
                "  ▀▄   ▄▀  ",
@@ -22,7 +31,9 @@ namespace Space_Invaders
                "   ▀▀░▀▀   "
         };
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         private static string[] _noSymbol = new string[5]                // tableau du symbole
         {
                "           ",
