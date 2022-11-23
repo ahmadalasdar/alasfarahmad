@@ -32,12 +32,18 @@ namespace Space_Invaders
                                                     |_|   |_|\__/_| |__/            
         ";
 
+        /// <summary>
+        /// 
+        /// </summary>
         private const string SON = @" 
                                                      ___ ___  _ _  
                                                     (_-// _ \| ' \ 
                                                     /__/\___/|_||_|           
         ";
 
+        /// <summary>
+        /// 
+        /// </summary>
         private const string DIFFICULTE = @"
                                                         _  _   __   __  _            _  _   
                                                      __| |(_) / _| / _|(_) __  _  _ | || |_ 
@@ -45,6 +51,9 @@ namespace Space_Invaders
                                                     \__/_||_||_|  |_|  |_|\__| \_._||_| \__|           
         ";
 
+        /// <summary>
+        /// 
+        /// </summary>
         private const string SCORES = @"          
 
                                                      ___ __  ___  _ _  ___  ___
@@ -52,6 +61,9 @@ namespace Space_Invaders
                                                     /__/\__|\___/|_|  \___|/__/        
         ";
 
+        /// <summary>
+        /// 
+        /// </summary>
         private const string EXIT = @"
                                                                _  _     ___    
                                                      ___ __ __(_)| |_  |__ \   
@@ -59,6 +71,9 @@ namespace Space_Invaders
                                                     \___|/_\_\|_| \__|  (_)              
         ";
 
+        /// <summary>
+        /// 
+        /// </summary>
         private const string EASY = @"
                                                       __            _  _      
                                                      / _| __ _  __ (_)| | ___ 
@@ -67,6 +82,9 @@ namespace Space_Invaders
            
         ";
 
+        /// <summary>
+        /// 
+        /// </summary>
         private const string HARD = @"
                                                      ___   _   __   __  _      _  _      
                                                     |   \ (_) / _| / _|(_) __ (_)| | ___ 
@@ -75,7 +93,9 @@ namespace Space_Invaders
             
         ";
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         private const string BACK = @"                 
                                                      _           _   
                                                     | |_ ___ ___| |_ 
@@ -83,10 +103,25 @@ namespace Space_Invaders
                                                     |___|__,|___|_,_|                 
         ";
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int cursorY = 10;                // Position de Y pour le cursor 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int cursorX = 35;                // Position de X pour le cursor
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int selected = 0;                // the selected difficulty
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         Game game = new Game();                 // objet game
 
 
