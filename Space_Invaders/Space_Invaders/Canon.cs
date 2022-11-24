@@ -78,7 +78,7 @@ namespace Space_Invaders
         /// </summary>
         public void DrawCanon()
         {
-            for(int i = 0; i < _symbol.Length; i++)
+            for (int i = 0; i < _symbol.Length; i++)
             {
 
                 for (int g = 0; g < _symbol[i].Length; g++)

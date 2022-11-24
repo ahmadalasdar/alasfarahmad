@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Space_Invaders
 {
@@ -32,27 +33,30 @@ namespace Space_Invaders
         public void StartGame()
         {
             Canon _ship = new Canon(cursorX, cursorY);
+            // Render
+            Console.Clear();
+            Console.SetCursorPosition(0, 1);
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("Score : ");
+            Console.WriteLine("Level : ");
+            Console.SetCursorPosition(120, 2);
+            Console.WriteLine("Name : " + name);
+            Console.SetCursorPosition(120, 3);
+            Console.WriteLine("Life : " + "♥♥♥");
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------");
+
+            _ship.DrawCanon();
+
             while (true)
             {
-                // UPDATE
-                DeplacementShip(_ship);
+                if (Console.KeyAvailable)
+                {
+                    _ship.DeleteCanon();
+                    // UPDATE
+                    DeplacementShip(_ship);
+                    _ship.DrawCanon();
 
-
-
-                // Render
-                Console.Clear();
-                Console.SetCursorPosition(0, 1);
-                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------");
-                Console.WriteLine("Score : ");
-                Console.WriteLine("Level : ");
-                Console.SetCursorPosition(120, 2);
-                Console.WriteLine("Name : " + name);
-                Console.SetCursorPosition(120, 3);
-                Console.WriteLine("Life : " + "♥♥♥");
-                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------");
-
-                _ship.DrawCanon();
-
+                }
 
             }
 
