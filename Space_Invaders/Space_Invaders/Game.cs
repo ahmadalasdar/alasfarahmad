@@ -13,6 +13,8 @@ namespace Space_Invaders
         /// 
         /// </summary>
         public string name { get; set; }
+
+        public byte playerHearts = 3;
         public int cursorX = 65;
         public int cursorY = 46;
 
@@ -45,7 +47,7 @@ namespace Space_Invaders
             Console.SetCursorPosition(120, 2);
             Console.WriteLine("Name : " + name);
             Console.SetCursorPosition(120, 3);
-            Console.WriteLine("Life : " + "♥♥♥");
+            DysplayHearts(playerHearts);
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------");
         }
 
@@ -156,6 +158,25 @@ namespace Space_Invaders
             Console.Clear();
             DrawBoard();
             _ship.DrawCanon();
+
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="playerHeart"></param>
+        public void DysplayHearts(byte playerHeart)
+        {
+            char heart = '♥';
+            string hearts = "";
+
+            for(int i = 0; i < playerHeart; i++)
+            {
+                hearts += heart;
+            }
+            Console.SetCursorPosition(120, 3);
+            Console.WriteLine("Life : " + hearts);
 
         }
 
