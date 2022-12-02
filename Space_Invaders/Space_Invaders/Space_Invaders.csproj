@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aliens.cs" />
+    <Compile Include="Alien.cs" />
     <Compile Include="Canon.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="MenuOption.cs" />
@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shoot.cs" />
     <Compile Include="Son.cs" />
+    <Compile Include="Squad.cs" />
     <Compile Include="Wall.cs" />
   </ItemGroup>
   <ItemGroup>

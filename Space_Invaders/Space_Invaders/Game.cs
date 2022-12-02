@@ -14,14 +14,21 @@ namespace Space_Invaders
         /// </summary>
         public string name { get; set; }
 
-        public byte playerHearts = 3;
+        public byte playerHearts = 2;
         public int cursorX = 65;
         public int cursorY = 46;
+        public int counter = 0;
+        public int bound = 20;
 
         private Canon _ship;
 
+        private Squad _aliens = new Squad(8);
+
         public const int MIN_X = 0;
         public const int MAX_X = 145;
+        public int _time = 0;
+
+
         private const string PAUSE = @"
 
                                             ███████╗███╗   ██╗    ██████╗  █████╗ ██╗   ██╗███████╗███████╗
@@ -57,14 +64,14 @@ namespace Space_Invaders
         /// 
         /// </summary>
         public void StartGame()
-        {
+         {
 
             _ship = new Canon(cursorX, cursorY);
             // Render
             DrawBoard();
 
             _ship.DrawCanon();
-
+            _aliens.DrawAliens();
             while (true)
             {
                 if (Console.KeyAvailable)
@@ -90,6 +97,12 @@ namespace Space_Invaders
 
 
 
+                }
+                counter++;
+                if (counter > bound)
+                {
+                    bound = counter + 20;
+                    _aliens.DeplacementAliens();
                 }
 
 

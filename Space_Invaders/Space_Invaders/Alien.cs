@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Space_Invaders
 {
-    public class Aliens
+    public class Alien
     {
         /// <summary>
         /// 
@@ -46,7 +46,7 @@ namespace Space_Invaders
         /// <summary>
         /// Default constroctor
         /// </summary>
-        public Aliens(int X, int Y)
+        public Alien(int X, int Y)
         {
             _x = X;
             _y = Y;
@@ -70,6 +70,37 @@ namespace Space_Invaders
             set { _y = value; }
         }
 
-        
+
+
+        public void DrawAlien()
+        {
+            for (int i = 0; i < _symbol.Length; i++)
+            {
+
+                for (int g = 0; g < _symbol[i].Length; g++)
+                {
+                    Console.SetCursorPosition(X + g, Y + i);
+                    Console.WriteLine(_symbol[i][g]);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Delelte Canon
+        /// </summary>
+        public void DeleteAlien()
+        {
+            for (int i = 0; i < _noSymbol.Length; i++)
+            {
+
+                for (int g = 0; g < _noSymbol[i].Length; g++)
+                {
+                    Console.SetCursorPosition(X + g, Y + i);
+                    Console.WriteLine(_noSymbol[i][g]);
+                }
+            }
+        }
+
     }
 }
