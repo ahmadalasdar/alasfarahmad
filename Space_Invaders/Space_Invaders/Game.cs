@@ -12,23 +12,25 @@ namespace Space_Invaders
         /// <summary>
         /// 
         /// </summary>
-        public string name { get; set; }
+        public string name { get; set; }        //
 
-        public byte playerHearts = 2;
-        public int cursorX = 65;
-        public int cursorY = 46;
-        public int counter = 0;
-        public int bound = 20;
+        public byte playerHearts = 2;           //
+        public int cursorX = 65;                //
+        public int cursorY = 46;                //
+        public int counter = 0;                 //
+        public int bound = 20;                  //
 
-        private Canon _ship;
+        private Canon _ship;                    //
 
-        private Squad _aliens = new Squad(8);
+        private Squad _aliens = new Squad(8);   //
 
-        public const int MIN_X = 0;
-        public const int MAX_X = 145;
-        public int _time = 0;
+        public const int MIN_X = 0;             //
+        public const int MAX_X = 145;           //
+        public int _time = 0;                   //
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         private const string PAUSE = @"
 
                                             ███████╗███╗   ██╗    ██████╗  █████╗ ██╗   ██╗███████╗███████╗
@@ -171,6 +173,7 @@ namespace Space_Invaders
             Console.Clear();
             DrawBoard();
             _ship.DrawCanon();
+            _aliens.DrawAliens();
 
         }
 
