@@ -51,7 +51,9 @@ namespace Space_Invaders
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void DrawAliens()
         {
 
@@ -62,7 +64,9 @@ namespace Space_Invaders
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void DeleteAliens()
         {
 
@@ -88,6 +92,9 @@ namespace Space_Invaders
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void DeplacementAliens()
         {
             
