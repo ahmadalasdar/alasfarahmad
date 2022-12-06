@@ -104,7 +104,7 @@ namespace Space_Invaders
                 if (counter > bound)
                 {
                     bound = counter + 20;
-                    _aliens.DeplacementAliens();
+                    //_aliens.DeplacementAliens();
                 }
 
 
