@@ -22,13 +22,13 @@ namespace Space_Invaders
         /// <summary>
         /// 
         /// </summary>
-        private static string[] _symbol = new string[5]                // tableau du symbole
-        {
-               "  ▀▄   ▄▀  ",
-               " ▄█▀███▀█▄ ",
-               "█▀███████▀█",
-               "█ █▀▀▀▀▀█ █",
-               "   ▀▀ ▀▀   "
+        private static string[] _symbol = new string[6]                // tableau du symbole
+        {      "             ",
+               "   ▀▄   ▄▀   ",
+               "  ▄█▀███▀█▄  ",
+               " █▀███████▀█ ",
+               " █ █▀▀▀▀▀█ █ ",
+               "    ▀▀ ▀▀    "
         };
 
         /// <summary>

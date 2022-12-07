@@ -8,13 +8,31 @@ namespace Space_Invaders
 {
     public class Squad
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private const int _aliensStartX = 0;
+        /// <summary>
+        /// 
+        /// </summary>
         private const int _aliensStartY = 6;
-        private const int _aliensWidth = 12;
-        private const int _aliensLingth = 5;
+        /// <summary>
+        /// 
+        /// </summary>
+        private const int _aliensWidth = 14;
+        /// <summary>
+        /// 
+        /// </summary>
+        private const int _aliensLingth = 6;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private int _direction = 1;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private bool _moveDown =true;
 
         /// <summary>
@@ -98,7 +116,6 @@ namespace Space_Invaders
         public void DeplacementAliens()
         {
             
-            DeleteAliens();
             if(((_aliens[_aliens.Count-1].X + _aliensWidth) == 145) && !_moveDown)
             {
                 

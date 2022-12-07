@@ -12,13 +12,17 @@ namespace Space_Invaders
         private char _symbol = '|';     // Le symbol du tire
 
         private int _y;                 // La position Y du Shoot
+        private int _x;
 
         /// <summary>
-        /// Default constroctor
+        /// 
         /// </summary>
-        public Shoot()
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        public Shoot(int X, int Y)
         {
-
+            _y = Y;
+            _x = X;
         }
 
         /// <summary>
@@ -30,6 +34,23 @@ namespace Space_Invaders
             set { _y = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public int X
+        {
+            get { return _x; }
+            set { _x = value; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public char Symbol
+        {
+            get { return _symbol; }
+            set { _symbol = value; }
+        }
 
 
     }

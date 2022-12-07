@@ -14,7 +14,7 @@ namespace Space_Invaders
         /// </summary>
         public string name { get; set; }        //
 
-        public byte playerHearts = 2;           //
+        public byte playerHearts = 3;           //
         public int cursorX = 65;                //
         public int cursorY = 46;                //
         public int counter = 0;                 //
@@ -22,7 +22,7 @@ namespace Space_Invaders
 
         private Canon _ship;                    //
 
-        private Squad _aliens = new Squad(8);   //
+        private Squad _aliens = new Squad(10);   //
 
         public const int MIN_X = 0;             //
         public const int MAX_X = 145;           //
@@ -100,12 +100,12 @@ namespace Space_Invaders
 
 
                 }
-                counter++;
-                if (counter > bound)
+                
+                if (counter++ % 5 ==0)
                 {
-                    bound = counter + 20;
-                    //_aliens.DeplacementAliens();
+                    _aliens.DeplacementAliens();
                 }
+                Thread.Sleep(10);
 
 
             }
