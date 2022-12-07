@@ -10,26 +10,57 @@ namespace Space_Invaders
     public class Game
     {
         /// <summary>
-        /// 
+        /// Getting et Setting le nom du joueur
         /// </summary>
-        public string name { get; set; }        //
-
-        public byte playerHearts = 3;           //
-        public int cursorX = 65;                //
-        public int cursorY = 46;                //
-        public int counter = 0;                 //
-        public int bound = 20;                  //
-
-        private Canon _ship;                    //
-
-        private Squad _aliens = new Squad(10);   //
-
-        public const int MIN_X = 0;             //
-        public const int MAX_X = 145;           //
-        public int _time = 0;                   //
+        public string name { get; set; }
+        
+        /// <summary>
+        /// les vie de Canon (player)
+        /// </summary>
+        public byte playerHearts = 3;
+        
+        /// <summary>
+        /// la position X du cursor
+        /// </summary>
+        public int cursorX = 65;
 
         /// <summary>
-        /// 
+        /// la position Y du cursor
+        /// </summary>
+        public int cursorY = 46;
+        
+        /// <summary>
+        /// Counter
+        /// </summary>
+        public int _counter = 0;    
+        
+        /// <summary>
+        /// le canon
+        /// </summary>
+        private Canon _ship;
+        
+        /// <summary>
+        /// la liste des aliens
+        /// </summary>
+        private Squad _aliens = new Squad(10);
+
+        /// <summary>
+        /// la Constate minimume de X
+        /// </summary>
+        public const int MIN_X = 0;
+
+        /// <summary>
+        /// la Constate maximum de X
+        /// </summary>
+        public const int MAX_X = 145;
+
+        /// <summary>
+        /// liste qui contient les bullets
+        /// </summary>
+        private List<Shoot> _listBullets = new List<Shoot>();
+
+        /// <summary>
+        /// Constate de string (En pause)
         /// </summary>
         private const string PAUSE = @"
 
@@ -42,9 +73,13 @@ namespace Space_Invaders
                                                                
         ";
 
+        /// <summary>
+        /// le niveau du jeu
+        /// </summary>
+        public int level = 1;
 
         /// <summary>
-        /// 
+        /// méthoder pour afficher le board
         /// </summary>
         private void DrawBoard()
         {
@@ -63,7 +98,7 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// 
+        /// méthode pour commencer le jeu
         /// </summary>
         public void StartGame()
          {
@@ -101,7 +136,7 @@ namespace Space_Invaders
 
                 }
                 
-                if (counter++ % 5 ==0)
+                if (_counter++ % 5 ==0)
                 {
                     _aliens.DeplacementAliens();
                 }
@@ -115,7 +150,7 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// 
+        /// méthode qui fait le déplacement de Canon
         /// </summary>
         /// <param name="_ship"></param>
         public void DeplacementShip(Canon _ship, ConsoleKey theKey)
@@ -179,7 +214,7 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// 
+        /// méthode qui gère les vies de canon (player)
         /// </summary>
         /// <param name="playerHeart"></param>
         public void DysplayHearts(byte playerHeart)
