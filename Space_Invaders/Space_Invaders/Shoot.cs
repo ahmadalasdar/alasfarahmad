@@ -14,6 +14,12 @@ namespace Space_Invaders
         private int _y;                 // La position Y du Shoot
         private int _x;
 
+
+        /// <summary>
+        /// liste qui contient les bullets
+        /// </summary>
+        private List<Shoot> _listBullets = new List<Shoot>();
+
         /// <summary>
         /// 
         /// </summary>
@@ -51,7 +57,6 @@ namespace Space_Invaders
             get { return _symbol; }
             set { _symbol = value; }
         }
-
 
     }
 }

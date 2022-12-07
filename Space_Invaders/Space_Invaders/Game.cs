@@ -13,12 +13,12 @@ namespace Space_Invaders
         /// Getting et Setting le nom du joueur
         /// </summary>
         public string name { get; set; }
-        
+
         /// <summary>
         /// les vie de Canon (player)
         /// </summary>
         public byte playerHearts = 3;
-        
+
         /// <summary>
         /// la position X du cursor
         /// </summary>
@@ -28,17 +28,17 @@ namespace Space_Invaders
         /// la position Y du cursor
         /// </summary>
         public int cursorY = 46;
-        
+
         /// <summary>
         /// Counter
         /// </summary>
-        public int _counter = 0;    
-        
+        public int _counter = 0;
+
         /// <summary>
         /// le canon
         /// </summary>
         private Canon _ship;
-        
+
         /// <summary>
         /// la liste des aliens
         /// </summary>
@@ -58,6 +58,31 @@ namespace Space_Invaders
         /// liste qui contient les bullets
         /// </summary>
         private List<Shoot> _listBullets = new List<Shoot>();
+
+        /// <summary>
+        /// le nombre des bllets
+        /// </summary>
+        private int _numberOfBullet = 0;
+
+        /// <summary>
+        /// le nombre max des bullets
+        /// </summary>
+        private const int NUMBEROFBULLETMAX = 30;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private double _freezeShoot = 500;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private DateTime _freezeBullet;
+
+        /// <summary>
+        /// le temps de bullet tiré
+        /// </summary>
+        private DateTime _shootTime;
 
         /// <summary>
         /// Constate de string (En pause)
@@ -101,7 +126,7 @@ namespace Space_Invaders
         /// méthode pour commencer le jeu
         /// </summary>
         public void StartGame()
-         {
+        {
 
             _ship = new Canon(cursorX, cursorY);
             // Render
@@ -129,14 +154,29 @@ namespace Space_Invaders
                         case ConsoleKey.Spacebar:
                             Pause(_ship);
                             break;
+                        case ConsoleKey.UpArrow:
+                            if ((DateTime.Now - _freezeBullet).TotalMilliseconds >= 35)
+                            {
+                                ClearBullet();
+                                MooveBullet();
+                                DrawBullet();
+                                _freezeBullet = DateTime.Now;
+                            }else if ((DateTime.Now - _shootTime).TotalMilliseconds >= _freezeShoot)
+                            {
+                                _listBullets.Add(new Shoot(_ship.X + 2, _ship.Y - 1));
+                                if (_numberOfBullet <= NUMBEROFBULLETMAX)
+                                    _numberOfBullet++;
+                                _shootTime = DateTime.Now;
+                            }
+                            break;
                     }
 
 
 
 
                 }
-                
-                if (_counter++ % 5 ==0)
+
+                if (_counter++ % 5 == 0)
                 {
                     _aliens.DeplacementAliens();
                 }
@@ -199,7 +239,7 @@ namespace Space_Invaders
 
             do
             {
-                 theKey = Console.ReadKey(true);
+                theKey = Console.ReadKey(true);
 
 
 
@@ -222,13 +262,68 @@ namespace Space_Invaders
             char heart = '♥';
             string hearts = "";
 
-            for(int i = 0; i < playerHeart; i++)
+            for (int i = 0; i < playerHeart; i++)
             {
                 hearts += heart;
             }
             Console.SetCursorPosition(120, 3);
             Console.WriteLine("Life : " + hearts);
 
+        }
+
+        /// <summary>
+        /// Dessiner les bullets
+        /// </summary>
+        public void DrawBullet()
+        {
+            // Boucle pour afficher chaques bullets dans le tableau
+            foreach (Shoot bullets in _listBullets)
+            {
+                if (bullets != null)
+                {
+                    Console.SetCursorPosition(bullets.X, bullets.Y);
+                    Console.Write(bullets.Symbol);
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Faire le mouvement des bullets 
+        /// </summary>
+        public void MooveBullet()
+        {
+            var ActiveBullets = _listBullets;
+            // Si la liste n'est pas vide
+            if (_listBullets != null)
+            {
+                // Boucle qui va rechercher toute les bullets du tableau et les déplacer, elle vérifie aussi si elle touche un Invaders
+                foreach (Shoot bullets in ActiveBullets)
+                {
+                    if (bullets.Y >= 8)
+                    {
+                        bullets.Y--;
+                    }
+
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// supprimer les pullet
+        /// </summary>
+        public void ClearBullet()
+        {
+            // Boucle pour effacer chaques bullets dans le tableau
+            foreach (Shoot bullets in _listBullets)
+            {
+                if (bullets != null)
+                {
+                    Console.SetCursorPosition(bullets.X, bullets.Y);
+                    Console.Write(" ");
+                }
+            }
         }
 
     }
