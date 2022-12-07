@@ -161,7 +161,8 @@ namespace Space_Invaders
                                 MooveBullet();
                                 DrawBullet();
                                 _freezeBullet = DateTime.Now;
-                            }else if ((DateTime.Now - _shootTime).TotalMilliseconds >= _freezeShoot)
+                            }
+                            if ((DateTime.Now - _shootTime).TotalMilliseconds >= _freezeShoot)
                             {
                                 _listBullets.Add(new Shoot(_ship.X + 2, _ship.Y - 1));
                                 if (_numberOfBullet <= NUMBEROFBULLETMAX)
