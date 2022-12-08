@@ -55,34 +55,10 @@ namespace Space_Invaders
         public const int MAX_X = 145;
 
         /// <summary>
-        /// liste qui contient les bullets
-        /// </summary>
-        private List<Shoot> _listBullets = new List<Shoot>();
-
-        /// <summary>
-        /// le nombre des bllets
-        /// </summary>
-        private int _numberOfBullet = 0;
-
-        /// <summary>
-        /// le nombre max des bullets
-        /// </summary>
-        private const int NUMBEROFBULLETMAX = 30;
-
-        /// <summary>
         /// 
         /// </summary>
-        private double _freezeShoot = 500;
+        private Bullets _bullets = new Bullets();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private DateTime _freezeBullet;
-
-        /// <summary>
-        /// le temps de bullet tiré
-        /// </summary>
-        private DateTime _shootTime;
 
         /// <summary>
         /// Constate de string (En pause)
@@ -136,6 +112,8 @@ namespace Space_Invaders
             _aliens.DrawAliens();
             while (true)
             {
+                _bullets.DrawBullets();
+                _bullets.moveBullets();
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo theKey = Console.ReadKey(true);
@@ -154,21 +132,12 @@ namespace Space_Invaders
                         case ConsoleKey.Spacebar:
                             Pause(_ship);
                             break;
+
                         case ConsoleKey.UpArrow:
-                            if ((DateTime.Now - _freezeBullet).TotalMilliseconds >= 35)
-                            {
-                                ClearBullet();
-                                MooveBullet();
-                                DrawBullet();
-                                _freezeBullet = DateTime.Now;
-                            }
-                            if ((DateTime.Now - _shootTime).TotalMilliseconds >= _freezeShoot)
-                            {
-                                _listBullets.Add(new Shoot(_ship.X + 2, _ship.Y - 1));
-                                if (_numberOfBullet <= NUMBEROFBULLETMAX)
-                                    _numberOfBullet++;
-                                _shootTime = DateTime.Now;
-                            }
+                            _bullets.AddBullet(_ship.X + 2, _ship.Y-1);
+                            _bullets.DrawBullets();
+                            _bullets.moveBullets();
+                            _ship.DrawCanon();
                             break;
                     }
 
@@ -180,6 +149,7 @@ namespace Space_Invaders
                 if (_counter++ % 5 == 0)
                 {
                     _aliens.DeplacementAliens();
+
                 }
                 Thread.Sleep(10);
 
@@ -270,61 +240,6 @@ namespace Space_Invaders
             Console.SetCursorPosition(120, 3);
             Console.WriteLine("Life : " + hearts);
 
-        }
-
-        /// <summary>
-        /// Dessiner les bullets
-        /// </summary>
-        public void DrawBullet()
-        {
-            // Boucle pour afficher chaques bullets dans le tableau
-            foreach (Shoot bullets in _listBullets)
-            {
-                if (bullets != null)
-                {
-                    Console.SetCursorPosition(bullets.X, bullets.Y);
-                    Console.Write(bullets.Symbol);
-                }
-            }
-
-        }
-
-        /// <summary>
-        /// Faire le mouvement des bullets 
-        /// </summary>
-        public void MooveBullet()
-        {
-            var ActiveBullets = _listBullets;
-            // Si la liste n'est pas vide
-            if (_listBullets != null)
-            {
-                // Boucle qui va rechercher toute les bullets du tableau et les déplacer, elle vérifie aussi si elle touche un Invaders
-                foreach (Shoot bullets in ActiveBullets)
-                {
-                    if (bullets.Y >= 8)
-                    {
-                        bullets.Y--;
-                    }
-
-                }
-            }
-
-        }
-
-        /// <summary>
-        /// supprimer les pullet
-        /// </summary>
-        public void ClearBullet()
-        {
-            // Boucle pour effacer chaques bullets dans le tableau
-            foreach (Shoot bullets in _listBullets)
-            {
-                if (bullets != null)
-                {
-                    Console.SetCursorPosition(bullets.X, bullets.Y);
-                    Console.Write(" ");
-                }
-            }
         }
 
     }

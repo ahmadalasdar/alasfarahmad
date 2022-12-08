@@ -55,7 +55,7 @@ namespace UnitTestSpace_Invaders
             //Act
             Aliens firestAlien = new Aliens();
 
-            Shoot shipBullet = new Shoot();
+            Bullet shipBullet = new Shoot();
 
             shipBullet.Y += 10;
 
@@ -74,7 +74,7 @@ namespace UnitTestSpace_Invaders
         {
 
             Canon myCanon = new Canon();
-            Shoot alienBullet = new Shoot();
+            Bullet alienBullet = new Shoot();
 
             alienBullet.Y += 5;
 
