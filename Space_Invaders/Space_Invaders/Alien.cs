@@ -9,20 +9,20 @@ namespace Space_Invaders
     public class Alien
     {
         /// <summary>
-        /// 
+        /// La position y de alien
         /// </summary>
         private int _y;
 
         /// <summary>
-        /// 
+        /// la position x de alien
         /// </summary>
         private int _x;
 
 
         /// <summary>
-        /// 
+        /// tableau du symbole d'alien
         /// </summary>
-        private static string[] _symbol = new string[6]                // tableau du symbole
+        private static string[] _symbol = new string[6]               
         {      "             ",
                "   ▀▄   ▄▀   ",
                "  ▄█▀███▀█▄  ",
@@ -32,7 +32,7 @@ namespace Space_Invaders
         };
 
         /// <summary>
-        /// 
+        /// tableau du symbole vide
         /// </summary>
         private static string[] _noSymbol = new string[5]                // tableau du symbole
         {
@@ -53,7 +53,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// Getting setting de la position X
         /// </summary>
         public int X
         {
@@ -62,7 +62,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// Getting setting de la position Y
         /// </summary>
         public int Y
         {
@@ -71,7 +71,9 @@ namespace Space_Invaders
         }
 
 
-
+        /// <summary>
+        /// méthode pour dessiner l'alien
+        /// </summary>
         public void DrawAlien()
         {
             for (int i = 0; i < _symbol.Length; i++)
@@ -87,7 +89,7 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// Delelte Canon
+        /// méthode pour Supprimer Canon
         /// </summary>
         public void DeleteAlien()
         {

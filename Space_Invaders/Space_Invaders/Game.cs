@@ -40,7 +40,7 @@ namespace Space_Invaders
         private Canon _ship;
 
         /// <summary>
-        /// la liste des aliens
+        /// istancier l'objet des aliens
         /// </summary>
         private Squad _aliens = new Squad(10);
 
@@ -55,13 +55,13 @@ namespace Space_Invaders
         public const int MAX_X = 145;
 
         /// <summary>
-        /// 
+        /// istancier l'objet des bullets
         /// </summary>
         private Bullets _bullets = new Bullets();
 
 
         /// <summary>
-        /// Constate de string (En pause)
+        /// Constante de string (En pause)
         /// </summary>
         private const string PAUSE = @"
 
@@ -161,9 +161,10 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// méthode qui fait le déplacement de Canon
+        /// Méthode qui fait le déplacement du canon selon la clé lue
         /// </summary>
-        /// <param name="_ship"></param>
+        /// <param name="_ship"> Le canon </param>
+        /// <param name="theKey"> La clé (Key) </param>
         public void DeplacementShip(Canon _ship, ConsoleKey theKey)
         {
 
@@ -201,6 +202,7 @@ namespace Space_Invaders
         /// <summary>
         /// méthode qui met le jeu en pause
         /// </summary>
+        /// <param name="_ship"> Le canon </param>
         public void Pause(Canon _ship)
         {
             ConsoleKeyInfo theKey;
@@ -208,6 +210,7 @@ namespace Space_Invaders
             Console.WriteLine(PAUSE);
             Console.WriteLine("\n\n\n\n\n\t\t\t\t\t\t  Retaper sur SpaceBar si vous voulez Continuer...!");
 
+            // boucle de recommencement (si la clé n'est pas SpaceBar)
             do
             {
                 theKey = Console.ReadKey(true);
@@ -227,7 +230,7 @@ namespace Space_Invaders
         /// <summary>
         /// méthode qui gère les vies de canon (player)
         /// </summary>
-        /// <param name="playerHeart"></param>
+        /// <param name="playerHeart"> le nombre des coeurs (Hearts) (HP) de player </param>
         public void DysplayHearts(byte playerHeart)
         {
             char heart = '♥';

@@ -9,42 +9,42 @@ namespace Space_Invaders
     public class Squad
     {
         /// <summary>
-        /// 
+        /// Position de Start d'aliens X
         /// </summary>
         private const int _aliensStartX = 0;
         /// <summary>
-        /// 
+        /// Position de Start d'aliens Y
         /// </summary>
         private const int _aliensStartY = 6;
         /// <summary>
-        /// 
+        /// width of aliens
         /// </summary>
         private const int _aliensWidth = 14;
         /// <summary>
-        /// 
+        /// Lingth of aliens
         /// </summary>
         private const int _aliensLingth = 6;
 
         /// <summary>
-        /// 
+        /// la direction
         /// </summary>
         private int _direction = 1;
 
         /// <summary>
-        /// 
+        /// boolien qui vérifie quand l'alien déscend
         /// </summary>
         private bool _moveDown =true;
 
         /// <summary>
-        /// 
+        /// Lise des aliens
         /// </summary>
         private List<Alien> _aliens = new List<Alien>();
 
 
         /// <summary>
-        /// 
+        /// Constroctur qui ajoute chaque alien à la liste
         /// </summary>
-        /// <param name="aliens"></param>
+        /// <param name="aliens"> La liste des aliens </param>
         public Squad(List<Alien> aliens)
         {
             foreach (Alien alien in aliens)
@@ -55,9 +55,9 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// 
+        /// Constructor avec les nombre paires des aliens
         /// </summary>
-        /// <param name="aliens"></param>
+        /// <param name="nomberAliens"> Nombre des aliens</param>
         public Squad(int nomberAliens)
         {
             for(int i = 0; i < nomberAliens/2; i++)
@@ -70,7 +70,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// méthode pour dessiner tous les aliens de la liste
         /// </summary>
         public void DrawAliens()
         {
@@ -83,7 +83,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// méthode pour supprimer tous les aliens 
         /// </summary>
         public void DeleteAliens()
         {
@@ -99,8 +99,8 @@ namespace Space_Invaders
         /// Adds X and Y to the current positions of the aliens
         /// Moves the aliens by the given X and Y
         /// </summary>
-        /// <param name="X"></param>
-        /// <param name="Y"></param>
+        /// <param name="X"> Position de X </param>
+        /// <param name="Y"> Position de Y </param>
         public void MoveAliens(int X, int Y)
         {
             foreach(Alien alien in _aliens)
@@ -111,7 +111,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// méthode pour faire le déplacement de tous les aliens 
         /// </summary>
         public void DeplacementAliens()
         {
