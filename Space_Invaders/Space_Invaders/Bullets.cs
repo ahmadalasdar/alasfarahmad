@@ -13,8 +13,6 @@ namespace Space_Invaders
         /// </summary>
         private List<Bullet> _bullets = new List<Bullet>();
 
-
-
         private List<Alien> _aliens = new List<Alien>();
 
         private Squad Squad = new Squad(10);
@@ -117,23 +115,6 @@ namespace Space_Invaders
         /// <summary>
         /// 
         /// </summary>
-        public void Verify()
-        {
-            foreach (Bullet bullet in _bullets)
-            {
-                foreach (Alien alien in _aliens)
-                {
-                    if (bullet.Y == alien.Y)
-                    {
-                        bullet.DeleteBullet();
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="squad"></param>
         public void CheckBulletCollision(Squad aliens)
         {
@@ -143,13 +124,13 @@ namespace Space_Invaders
             {
                 foreach (Alien alien in aliens.Aliens)
                 {
+
                     if (bullet.X > alien.X && bullet.X < alien.X + 15 && bullet.Y <= alien.Y + 10 && bullet.Y >= alien.Y)
                     {
                         alien.DeleteAlien();
                         _aliens.Add(alien);
                         //squad.Aliens.Remove(alien);
                         bullet.DeleteBullet();
-                        
                     }
                 }
             }

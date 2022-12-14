@@ -97,7 +97,7 @@ namespace Space_Invaders
             Console.Clear();
             Console.SetCursorPosition(0, 1);
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine("Score : " + Scores);
+            Console.WriteLine("Score : " + _scores);
             Console.WriteLine("Level : ");
             Console.SetCursorPosition(120, 2);
             Console.WriteLine("Name : " + name);
@@ -148,7 +148,7 @@ namespace Space_Invaders
                             _bullets.DrawBullets();
                             _bullets.moveBullets();
                             _ship.DrawCanon();
-                            _bullets.CheckBulletCollision(_aliens,this);
+                            _bullets.CheckBulletCollision(_aliens);
                             break;
                     }
 
