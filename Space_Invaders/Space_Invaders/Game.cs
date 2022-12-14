@@ -59,7 +59,6 @@ namespace Space_Invaders
         /// </summary>
         private Bullets _bullets = new Bullets();
 
-
         /// <summary>
         /// Constante de string (En pause)
         /// </summary>
@@ -146,6 +145,7 @@ namespace Space_Invaders
 
                 }
 
+                // Executer la boucle une fois chaque 5 fois
                 if (_counter++ % 5 == 0)
                 {
                     _aliens.DeplacementAliens();
@@ -244,6 +244,8 @@ namespace Space_Invaders
             Console.WriteLine("Life : " + hearts);
 
         }
+
+
 
     }
 }

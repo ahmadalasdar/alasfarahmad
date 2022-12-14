@@ -34,13 +34,14 @@ namespace Space_Invaders
         /// <summary>
         /// tableau du symbole vide
         /// </summary>
-        private static string[] _noSymbol = new string[5]                // tableau du symbole
+        private static string[] _noSymbol = new string[6]                // tableau du symbole
         {
-               "           ",
-               "           ",
-               "           ",
-               "           ",
-               "           "
+               "             ",
+               "             ",
+               "             ",
+               "             ",
+               "             ",
+               "             "
         };
 
         /// <summary>

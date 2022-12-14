@@ -142,6 +142,18 @@ namespace Space_Invaders
         }
 
 
+        /// <summary>
+        /// Supprimer l'alien de la liste
+        /// </summary>
+        public void RemoveAliens()
+        {
+            foreach(Alien alien in _aliens)
+            {
+                _aliens.Remove(alien);
+            }
+        }
+
+
 
 
 

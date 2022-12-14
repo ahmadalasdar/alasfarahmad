@@ -9,13 +9,17 @@ namespace Space_Invaders
     public class Bullets
     {
         /// <summary>
-        /// 
+        /// Liste de bullet
         /// </summary>
         private List<Bullet> _bullets = new List<Bullet>();
 
 
 
+        private List<Alien> _aliens = new List<Alien>();
 
+        /// <summary>
+        /// default constructor
+        /// </summary>
         public Bullets()
         {
 
@@ -23,7 +27,7 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
         public Bullets(List<Bullet> bullets)
         {
@@ -35,7 +39,7 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// 
+        /// méthode pour dessiner les bullets
         /// </summary>
         public void DrawBullets()
         {
@@ -47,7 +51,7 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// 
+        /// méthode pour supprimer les bullets
         /// </summary>
         public void DeleteBullets()
         {
@@ -58,7 +62,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// méthode pour supprimer un bullet les bullets
         /// </summary>
         public void DeleteOneBullet()
         {
@@ -73,7 +77,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// méthode pour déplacer les bullets
         /// </summary>
         public void moveBullets()
         {
@@ -88,6 +92,7 @@ namespace Space_Invaders
                 }
                 else
                 {
+
                     bullet.MoveBullet();
                 }
 
@@ -100,7 +105,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// méthode pour ajouter les bullets à la liste
         /// </summary>
         public void AddBullet(int X, int Y)
         {
@@ -108,7 +113,20 @@ namespace Space_Invaders
         }
 
 
-
+        public void Verify()
+        {
+            foreach(Bullet bullet in _bullets)
+            {
+                foreach (Alien alien in _aliens)
+                {
+                    if (bullet.Y == alien.Y)
+                    {
+                        bullet.DeleteBullet();
+                        alien.DeleteAlien();
+                    }
+            }
+            }
+        }
 
     }
 }
