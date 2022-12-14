@@ -60,8 +60,14 @@ namespace Space_Invaders
         /// </summary>
         private Bullets _bullets = new Bullets();
 
+        /// <summary>
+        /// les Scores
+        /// </summary>
         private int _scores;
 
+        /// <summary>
+        /// Getting Setting 
+        /// </summary>
         public int Scores { get => _scores; set => _scores = value; }
 
         /// <summary>
@@ -142,7 +148,7 @@ namespace Space_Invaders
                             _bullets.DrawBullets();
                             _bullets.moveBullets();
                             _ship.DrawCanon();
-                            _bullets.CheckBulletCollision(_aliens);
+                            _bullets.CheckBulletCollision(_aliens,this);
                             break;
                     }
 

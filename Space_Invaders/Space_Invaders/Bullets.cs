@@ -135,31 +135,28 @@ namespace Space_Invaders
         /// 
         /// </summary>
         /// <param name="squad"></param>
-        public void CheckBulletCollision(Squad squad)
+        public void CheckBulletCollision(Squad aliens)
         {
             List<Alien> _aliens = new List<Alien>();
 
             foreach (Bullet bullet in _bullets)
             {
-                foreach (Alien alien in squad.Aliens)
+                foreach (Alien alien in aliens.Aliens)
                 {
-
-
-                    if (bullet.X > alien.X && bullet.X < alien.X + 10 && bullet.Y <= alien.Y + 5 && bullet.Y >= alien.Y)
+                    if (bullet.X > alien.X && bullet.X < alien.X + 15 && bullet.Y <= alien.Y + 10 && bullet.Y >= alien.Y)
                     {
-                        Game game = new Game();
                         alien.DeleteAlien();
                         _aliens.Add(alien);
                         //squad.Aliens.Remove(alien);
                         bullet.DeleteBullet();
-                        game.Scores += 150;
+                        
                     }
                 }
             }
 
             foreach (Alien alien1 in _aliens)
             {
-                squad.Aliens.Remove(alien1);
+                aliens.Aliens.Remove(alien1);
             }
 
         }
