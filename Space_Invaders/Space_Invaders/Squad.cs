@@ -40,6 +40,8 @@ namespace Space_Invaders
         /// </summary>
         private List<Alien> _aliens = new List<Alien>();
 
+        public List<Alien> Aliens { get => _aliens; set => _aliens = value; }
+
 
         /// <summary>
         /// Constroctur qui ajoute chaque alien à la liste
@@ -64,8 +66,10 @@ namespace Space_Invaders
             {
                 Alien alien = new Alien(_aliensStartX + (_aliensWidth * i), _aliensStartY);
                 Alien alien2 = new Alien(_aliensStartX + (_aliensWidth * i), _aliensStartY + _aliensLingth);
+                Alien alien3 = new Alien(_aliensStartX + (_aliensWidth * i), _aliensStartY + _aliensLingth * 2);
                 _aliens.Add(alien);
                 _aliens.Add(alien2);
+                _aliens.Add(alien3);
             }
         }
 
@@ -152,16 +156,6 @@ namespace Space_Invaders
                 _aliens.Remove(alien);
             }
         }
-
-
-
-
-
-
-
-
-
-
 
 
     }

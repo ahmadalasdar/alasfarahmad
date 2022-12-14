@@ -14,6 +14,7 @@ namespace Space_Invaders
         /// </summary>
         public string name { get; set; }
 
+
         /// <summary>
         /// les vie de Canon (player)
         /// </summary>
@@ -59,6 +60,10 @@ namespace Space_Invaders
         /// </summary>
         private Bullets _bullets = new Bullets();
 
+        private int _scores;
+
+        public int Scores { get => _scores; set => _scores = value; }
+
         /// <summary>
         /// Constante de string (En pause)
         /// </summary>
@@ -86,7 +91,7 @@ namespace Space_Invaders
             Console.Clear();
             Console.SetCursorPosition(0, 1);
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine("Score : ");
+            Console.WriteLine("Score : " + Scores);
             Console.WriteLine("Level : ");
             Console.SetCursorPosition(120, 2);
             Console.WriteLine("Name : " + name);
@@ -137,6 +142,7 @@ namespace Space_Invaders
                             _bullets.DrawBullets();
                             _bullets.moveBullets();
                             _ship.DrawCanon();
+                            _bullets.CheckBulletCollision(_aliens);
                             break;
                     }
 

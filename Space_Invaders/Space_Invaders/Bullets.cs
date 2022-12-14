@@ -17,6 +17,8 @@ namespace Space_Invaders
 
         private List<Alien> _aliens = new List<Alien>();
 
+        private Squad Squad = new Squad(10);
+
         /// <summary>
         /// default constructor
         /// </summary>
@@ -112,21 +114,59 @@ namespace Space_Invaders
             _bullets.Add(new Bullet(X, Y));
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void Verify()
         {
-            foreach(Bullet bullet in _bullets)
+            foreach (Bullet bullet in _bullets)
             {
                 foreach (Alien alien in _aliens)
                 {
                     if (bullet.Y == alien.Y)
                     {
                         bullet.DeleteBullet();
-                        alien.DeleteAlien();
                     }
-            }
+                }
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="squad"></param>
+        public void CheckBulletCollision(Squad squad)
+        {
+            List<Alien> _aliens = new List<Alien>();
+
+            foreach (Bullet bullet in _bullets)
+            {
+                foreach (Alien alien in squad.Aliens)
+                {
+
+
+                    if (bullet.X > alien.X && bullet.X < alien.X + 10 && bullet.Y <= alien.Y + 5 && bullet.Y >= alien.Y)
+                    {
+                        Game game = new Game();
+                        alien.DeleteAlien();
+                        _aliens.Add(alien);
+                        //squad.Aliens.Remove(alien);
+                        bullet.DeleteBullet();
+                        game.Scores += 150;
+                    }
+                }
+            }
+
+            foreach (Alien alien1 in _aliens)
+            {
+                squad.Aliens.Remove(alien1);
+            }
+
+        }
+
+
+
+
 
     }
 }
