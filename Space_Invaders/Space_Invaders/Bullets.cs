@@ -17,7 +17,10 @@ namespace Space_Invaders
 
         //private Squad Squad = new Squad(10);
 
-        private Game _game;
+        private int _scoreAlien ;
+
+        public int ScoreAlien { get => _scoreAlien; set => _scoreAlien = value; }
+
         /// <summary>
         /// default constructor
         /// </summary>
@@ -133,7 +136,7 @@ namespace Space_Invaders
                         _aliens.Add(alien);
                         //squad.Aliens.Remove(alien);
                         bullet.DeleteBullet();
-                        
+                        _scoreAlien += 100;
                     }
                 }
             }
@@ -143,6 +146,15 @@ namespace Space_Invaders
                 aliens.Aliens.Remove(alien1);
             }
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public int Get_theScore()
+        {
+            return ScoreAlien;
         }
 
 

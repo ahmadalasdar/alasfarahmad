@@ -446,12 +446,23 @@ namespace Space_Invaders
             // modifier la couleur
             Console.ForegroundColor = ConsoleColor.White;
 
-            // demander le nom
-            Console.Write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t Your name : ");
+            // boucle qui se répète si user met pas au moins 2 caractères
+            do
+            {
+                Console.Clear();
+                Console.Write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t Au moins 2 caractères");
 
-            game.name = Console.ReadLine();
+                // demander le nom
+                Console.Write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t Your name : ");
+                game.name = Console.ReadLine();
+                Console.Clear();
+
+            } while (game.name.Length < 2);
 
             game.StartGame();
+            
+
+
 
         }
 

@@ -108,10 +108,10 @@ namespace Space_Invaders
         /// </summary>
         private void DrawBoard()
         {
-            Console.Clear();
+            //Console.Clear();
             Console.SetCursorPosition(0, 1);
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine("Score : " + _scores);
+            Console.WriteLine("Score : " + _bullets.Get_theScore());
             Console.WriteLine("Level : ");
             Console.SetCursorPosition(120, 2);
             Console.WriteLine("Name : " + name);
@@ -119,7 +119,6 @@ namespace Space_Invaders
             DysplayHearts(playerHearts);
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------");
         }
-
 
 
         /// <summary>
@@ -163,7 +162,7 @@ namespace Space_Invaders
                             _bullets.moveBullets();
                             _ship.DrawCanon();
                             _bullets.CheckBulletCollision(_aliens);
-
+                            DrawBoard();
                             break;
                     }
 
@@ -180,6 +179,11 @@ namespace Space_Invaders
                 }
                 Thread.Sleep(10);
 
+
+                if(_aliens.Aliens.Count == 0)
+                {
+                    Console.WriteLine("Bravo");
+                }
 
             }
 
