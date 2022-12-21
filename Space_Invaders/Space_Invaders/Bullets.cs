@@ -15,14 +15,15 @@ namespace Space_Invaders
 
         private List<Alien> _aliens = new List<Alien>();
 
-        private Squad Squad = new Squad(10);
+        //private Squad Squad = new Squad(10);
 
+        private Game _game;
         /// <summary>
         /// default constructor
         /// </summary>
         public Bullets()
         {
-
+            
         }
 
 
@@ -112,10 +113,11 @@ namespace Space_Invaders
             _bullets.Add(new Bullet(X, Y));
         }
 
+
         /// <summary>
-        /// 
+        /// Méthode pour vérifier le touche des bullets aux Aliens
         /// </summary>
-        /// <param name="squad"></param>
+        /// <param name="aliens"> la liste des aliens </param>
         public void CheckBulletCollision(Squad aliens)
         {
             List<Alien> _aliens = new List<Alien>();
@@ -125,12 +127,13 @@ namespace Space_Invaders
                 foreach (Alien alien in aliens.Aliens)
                 {
 
-                    if (bullet.X > alien.X && bullet.X < alien.X + 15 && bullet.Y <= alien.Y + 10 && bullet.Y >= alien.Y)
+                    if (bullet.X > alien.X && bullet.X < alien.X + 14 && bullet.Y <= alien.Y + 6 && bullet.Y >= alien.Y)
                     {
                         alien.DeleteAlien();
                         _aliens.Add(alien);
                         //squad.Aliens.Remove(alien);
                         bullet.DeleteBullet();
+                        
                     }
                 }
             }

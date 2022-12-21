@@ -85,6 +85,20 @@ namespace Space_Invaders
         ";
 
         /// <summary>
+        /// Constante de string (Game Over)
+        /// </summary>
+        private const string GAMEOVER = @"
+            
+                                               ______                        ____                 
+                                              / ____/___ _____ ___  ___     / __ \_   _____  _____
+                                             / / __/ __ `/ __ `__ \/ _ \   / / / / | / / _ \/ ___/
+                                            / /_/ / /_/ / / / / / /  __/  / /_/ /| |/ /  __/ /    
+                                            \____/\__,_/_/ /_/ /_/\___/   \____/ |___/\___/_/     
+                                                      
+                                                               
+        ";
+
+        /// <summary>
         /// le niveau du jeu
         /// </summary>
         public int level = 1;
@@ -149,6 +163,7 @@ namespace Space_Invaders
                             _bullets.moveBullets();
                             _ship.DrawCanon();
                             _bullets.CheckBulletCollision(_aliens);
+
                             break;
                     }
 
@@ -157,7 +172,7 @@ namespace Space_Invaders
 
                 }
 
-                // Executer la boucle une fois chaque 5 fois
+                // Executer une fois chaque 5 fois
                 if (_counter++ % 5 == 0)
                 {
                     _aliens.DeplacementAliens();
