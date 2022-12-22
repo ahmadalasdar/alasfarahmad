@@ -40,8 +40,22 @@ namespace Space_Invaders
         /// </summary>
         private List<Alien> _aliens = new List<Alien>();
 
-        public List<Alien> Aliens { get => _aliens; set => _aliens = value; }
+        
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<Alien> Aliens { get => _aliens; set => _aliens = value; }
+        public Bullets Bullets { get => _bullets; set => _bullets = value; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private Random _random = new Random();
+
+
+
+        private Bullets _bullets = new Bullets();
 
         /// <summary>
         /// Constroctur qui ajoute chaque alien à la liste
@@ -119,28 +133,31 @@ namespace Space_Invaders
         /// </summary>
         public void DeplacementAliens()
         {
-            
-            if(((_aliens[_aliens.Count-1].X + _aliensWidth) == 145) && !_moveDown)
+
+            if (_aliens.Count > 0)
             {
-                
-                MoveAliens(0, 1);
-                _direction = -1;
-                _moveDown = true;
+                if (((_aliens[_aliens.Count - 1].X + _aliensWidth) == 145) && !_moveDown)
+                {
+
+                    MoveAliens(0, 1);
+                    _direction = -1;
+                    _moveDown = true;
+                }
+                else if ((_aliens[0].X == 0) && !_moveDown)
+                {
+
+                    MoveAliens(0, 1);
+                    _direction = 1;
+                    _moveDown = true;
+                }
+                else
+                {
+
+                    MoveAliens(_direction, 0);
+                    _moveDown = false;
+                }
+                DrawAliens();
             }
-            else if((_aliens[0].X == 0) && !_moveDown)
-            {
-                
-                MoveAliens(0, 1);
-                _direction = 1;
-                _moveDown = true;
-            }
-            else
-            {
-                
-                MoveAliens(_direction, 0);
-                _moveDown = false;
-            }
-            DrawAliens();
 
 
         }
@@ -155,6 +172,17 @@ namespace Space_Invaders
             {
                 _aliens.Remove(alien);
             }
+        }
+
+        public void ShootAliens()
+        {
+            int _numberAliens = _aliens.Count();
+
+            int _shootingAlienPosition = _random.Next(_numberAliens);
+
+            Alien shootingAlien = _aliens[_shootingAlienPosition];
+
+            _bullets.AddBullet(shootingAlien.X + _aliensWidth / 2, shootingAlien.Y + _aliensLingth,-1);
         }
 
 

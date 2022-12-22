@@ -18,7 +18,7 @@ namespace Space_Invaders
         /// <summary>
         /// les vie de Canon (player)
         /// </summary>
-        public byte playerHearts = 3;
+        public int playerHearts = 3;
 
         /// <summary>
         /// la position X du cursor
@@ -49,6 +49,11 @@ namespace Space_Invaders
         /// la Constate minimume de X
         /// </summary>
         public const int MIN_X = 0;
+
+        private int _bulletSpeed = 1;
+        private int _bulletLimit = 1;
+
+        private int _alienSpeed = 5;
 
         /// <summary>
         /// la Constate maximum de X
@@ -98,10 +103,26 @@ namespace Space_Invaders
                                                                
         ";
 
+        private const string BRAVO = @"
+            
+   
+          
+                                                 ____  ____    __  _  _  _____ 
+                                                (  _ \(  _ \  /__\( \/ )(  _  )
+                                                 ) _ < )   / /(__)\\  /  )(_)( 
+                                                (____/(_)\_)(__)(__)\/  (_____)
+                                            
+                                                               
+        ";
+
         /// <summary>
         /// le niveau du jeu
         /// </summary>
-        public int level = 1;
+        public int _level = 1;
+
+
+        public const int MAXHEARTS = 3;
+
 
         /// <summary>
         /// méthoder pour afficher le board
@@ -112,7 +133,7 @@ namespace Space_Invaders
             Console.SetCursorPosition(0, 1);
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("Score : " + _bullets.Get_theScore());
-            Console.WriteLine("Level : ");
+            Console.WriteLine("Level : " + _level);
             Console.SetCursorPosition(120, 2);
             Console.WriteLine("Name : " + name);
             Console.SetCursorPosition(120, 3);
@@ -126,7 +147,12 @@ namespace Space_Invaders
         /// </summary>
         public void StartGame()
         {
-
+            if(MenuOption.Difficulty == 2)
+            {
+                _bulletSpeed = 5;
+                _alienSpeed = 3;
+                _bulletLimit = 15;
+            }
             _ship = new Canon(cursorX, cursorY);
             // Render
             DrawBoard();
@@ -135,55 +161,86 @@ namespace Space_Invaders
             _aliens.DrawAliens();
             while (true)
             {
-                _bullets.DrawBullets();
-                _bullets.moveBullets();
+                if (_counter % _bulletSpeed == 0)
+                {
+                    _bullets.DrawBullets();
+                    _bullets.moveBullets();
+                }
+
+                _aliens.Bullets.DrawDownBullets();
+                _aliens.Bullets.moveBullets();
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo theKey = Console.ReadKey(true);
 
                     // UPDATE
-                    switch (theKey.Key)
-                    {
-                        case ConsoleKey.RightArrow:
-                            DeplacementShip(_ship, theKey.Key);
-                            break;
+                    
+                        switch (theKey.Key)
+                        {
+                            case ConsoleKey.RightArrow:
+                                DeplacementShip(_ship, theKey.Key);
+                                break;
 
-                        case ConsoleKey.LeftArrow:
-                            DeplacementShip(_ship, theKey.Key);
-                            break;
+                            case ConsoleKey.LeftArrow:
+                                DeplacementShip(_ship, theKey.Key);
+                                break;
 
-                        case ConsoleKey.Spacebar:
-                            Pause(_ship);
-                            break;
+                            case ConsoleKey.Spacebar:
+                                Pause(_ship);
+                                break;
 
-                        case ConsoleKey.UpArrow:
-                            _bullets.AddBullet(_ship.X + 2, _ship.Y-1);
-                            _bullets.DrawBullets();
-                            _bullets.moveBullets();
-                            _ship.DrawCanon();
-                            _bullets.CheckBulletCollision(_aliens);
-                            DrawBoard();
-                            break;
-                    }
+                            case ConsoleKey.UpArrow:
+                            if (_counter % _bulletLimit == 0)
+                            {
+                                _bullets.AddBullet(_ship.X + 2, _ship.Y - 1);
+                                _bullets.DrawBullets();
+                                _bullets.moveBullets();
+                                _ship.DrawCanon();
+                            }
+                                break;
+                        }
+                    
+                }
 
-
-
-
+                if(_counter % 20 == 0)
+                {
+                    _aliens.ShootAliens();
                 }
 
                 // Executer une fois chaque 5 fois
-                if (_counter++ % 5 == 0)
+                if (_counter++ % _alienSpeed == 0)
                 {
                     _aliens.DeplacementAliens();
+                    if (_bullets.CheckBulletCollision(_aliens))
+                    {
+                        DrawBoard();
 
+                    }
+
+                }
+                if (_aliens.Bullets.CheckAliensBulletsColision(_ship))
+                {
+                    playerHearts--;
+                    DrawBoard();
+                    Thread.Sleep(2000);
                 }
                 Thread.Sleep(10);
 
 
                 if(_aliens.Aliens.Count == 0)
                 {
-                    Console.WriteLine("Bravo");
+                    Console.WriteLine(BRAVO);
+                    Thread.Sleep(3000);
+                    Console.Clear();
+                    _level++;
+                    DrawBoard();
+
+                    _ship.DrawCanon();
+                    _aliens = new Squad(10);
+                    _aliens.DrawAliens();
+
                 }
+                
 
             }
 
@@ -262,14 +319,20 @@ namespace Space_Invaders
         /// méthode qui gère les vies de canon (player)
         /// </summary>
         /// <param name="playerHeart"> le nombre des coeurs (Hearts) (HP) de player </param>
-        public void DysplayHearts(byte playerHeart)
+        public void DysplayHearts(int playerHeart)
         {
-            char heart = '♥';
+            string heart = "♥";
             string hearts = "";
+            string noHeart = " ";
 
             for (int i = 0; i < playerHeart; i++)
             {
                 hearts += heart;
+                
+            }
+            for(int j = playerHeart; j <= MAXHEARTS; j++)
+            {
+                hearts += noHeart;
             }
             Console.SetCursorPosition(120, 3);
             Console.WriteLine("Life : " + hearts);

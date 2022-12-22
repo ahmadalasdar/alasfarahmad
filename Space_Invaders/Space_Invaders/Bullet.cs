@@ -21,6 +21,15 @@ namespace Space_Invaders
         /// <summary>
         /// 
         /// </summary>
+        private static char[] _downSymbol = new char[2]                // tableau du symbole
+        {       ' ',
+                '|'
+        };
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         private static char[] _noSymbol = new char[2]                // tableau du symbole
         {       ' ',
                 ' '
@@ -29,6 +38,7 @@ namespace Space_Invaders
         private int _y;                 // La position Y du Shoot
         private int _x;
 
+        public int _direction = 1;
 
         /// <summary>
         /// 
@@ -39,6 +49,18 @@ namespace Space_Invaders
         {
             _y = Y;
             _x = X;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        public Bullet(int X, int Y, int direction)
+        {
+            _y = Y;
+            _x = X;
+            _direction = direction;
         }
 
         /// <summary>
@@ -97,8 +119,20 @@ namespace Space_Invaders
         /// </summary>
         public void MoveBullet()
         {
-            Y = Y - 1;
+            Y = Y - _direction;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DrawDownBullet()
+        {
+            for (int i = 0; i < _downSymbol.Length; i++)
+            {
+                Console.SetCursorPosition(X, Y + i);
+                Console.WriteLine(_downSymbol[i]);
+            }
+        }
     }
 }

@@ -47,10 +47,23 @@ namespace Space_Invaders
         /// </summary>
         public void DrawBullets()
         {
+            
            foreach(Bullet bullet in _bullets)
            {
                 bullet.DrawBullet();
            }
+        }
+
+        /// <summary>
+        /// méthode pour dessiner les bullets
+        /// </summary>
+        public void DrawDownBullets()
+        {
+
+            foreach (Bullet bullet in _bullets)
+            {
+                bullet.DrawDownBullet();
+            }
         }
 
 
@@ -118,34 +131,54 @@ namespace Space_Invaders
 
 
         /// <summary>
+        /// méthode pour ajouter les bullets à la liste
+        /// </summary>
+        public void AddBullet(int X, int Y, int direction)
+        {
+            _bullets.Add(new Bullet(X, Y,direction));
+        }
+
+
+        /// <summary>
         /// Méthode pour vérifier le touche des bullets aux Aliens
         /// </summary>
         /// <param name="aliens"> la liste des aliens </param>
-        public void CheckBulletCollision(Squad aliens)
+        public bool CheckBulletCollision(Squad aliens)
         {
             List<Alien> _aliens = new List<Alien>();
+
+            List<Bullet> bullets = new List<Bullet>();
+
+            bool _colision = false;
+
 
             foreach (Bullet bullet in _bullets)
             {
                 foreach (Alien alien in aliens.Aliens)
                 {
 
-                    if (bullet.X > alien.X && bullet.X < alien.X + 14 && bullet.Y <= alien.Y + 6 && bullet.Y >= alien.Y)
+                    if (bullet.X > alien.X && bullet.X < alien.X + 13 && bullet.Y <= alien.Y + 5 && bullet.Y >= alien.Y)
                     {
                         alien.DeleteAlien();
                         _aliens.Add(alien);
                         //squad.Aliens.Remove(alien);
                         bullet.DeleteBullet();
                         _scoreAlien += 100;
+                        bullets.Add(bullet);
+                        _colision = true;
                     }
                 }
             }
-
+            
             foreach (Alien alien1 in _aliens)
             {
                 aliens.Aliens.Remove(alien1);
             }
-
+            foreach (Bullet bullet in bullets)
+            {
+                _bullets.Remove(bullet);
+            }
+            return _colision;
         }
 
         /// <summary>
@@ -157,7 +190,37 @@ namespace Space_Invaders
             return ScoreAlien;
         }
 
+        public bool CheckAliensBulletsColision(Canon ship)
+        {
+            bool _colisionCanon = false;
 
+            List<Bullet> bullets = new List<Bullet>();
+
+            foreach (Bullet bullet in _bullets)
+            {
+                if(bullet.Y >= 47)
+                {
+                    bullet.DeleteBullet();
+                    bullets.Add(bullet);
+                }
+
+                if (bullet.X >= ship.X && bullet.X < ship.X + 5 && bullet.Y <= ship.Y + 3 && bullet.Y >= ship.Y)
+                {
+                   
+                    bullet.DeleteBullet();
+                    bullets.Add(bullet);
+                    _colisionCanon = true;
+                }
+            }
+            foreach (Bullet bullet in bullets)
+            {
+                _bullets.Remove(bullet);
+            }
+            return _colisionCanon;
+
+
+
+        }
 
 
 

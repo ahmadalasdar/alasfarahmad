@@ -116,13 +116,15 @@ namespace Space_Invaders
         /// <summary>
         /// 
         /// </summary>
-        public int selected = 0;                // the selected difficulty
+        private static int _difficulty = 1;                // the selected difficulty
 
 
         /// <summary>
         /// 
         /// </summary>
         Game game = new Game();                 // objet game
+
+        public static int Difficulty { get => _difficulty; set => _difficulty = value; }
 
 
 
@@ -307,7 +309,7 @@ namespace Space_Invaders
                 Console.WriteLine("");
 
 
-                if (selected == 1)
+                if (_difficulty == 1)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
 
@@ -320,7 +322,7 @@ namespace Space_Invaders
 
                 Console.WriteLine(EASY);
 
-                if (selected == 2)
+                if (_difficulty == 2)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                 }else
@@ -404,7 +406,7 @@ namespace Space_Invaders
                         if (theKey.Key == ConsoleKey.Enter && Y == 10)
                         {
 
-                            selected = 1;
+                            _difficulty = 1;
                         }
 
                         break;
@@ -413,7 +415,7 @@ namespace Space_Invaders
                         if (theKey.Key == ConsoleKey.Enter && Y == 17)
                         {
 
-                            selected = 2;
+                            _difficulty = 2;
                         }
                         break;
                     case 33:
