@@ -392,7 +392,7 @@ namespace Space_Invaders
 
             }else if(theKey.Key == ConsoleKey.Enter)
             {
-               
+                _lastScore = Scores;
                 play.PrancipalMenu();
             }
 

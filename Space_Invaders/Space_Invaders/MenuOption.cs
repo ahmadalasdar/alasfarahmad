@@ -157,7 +157,7 @@ namespace Space_Invaders
                 Console.Clear();
                 TheTitle();
                 Console.ForegroundColor = ConsoleColor.Yellow;
-
+                Console.WriteLine(Game._lastScore);
                 Console.WriteLine(play);
                 Console.WriteLine(SON);
                 Console.WriteLine(DIFFICULTE);
@@ -181,7 +181,7 @@ namespace Space_Invaders
 
                     case 4:
                         Console.Clear();
-                        Console.WriteLine(SCORES + " " + "\n\n\t\t\t\t\t\t\t\t\t" + _lastScoree);
+                        Console.WriteLine(SCORES + " " + "\n\n\t\t\t\t\t\t\t\t\t");
                         Console.ReadKey();
                         break;
 
