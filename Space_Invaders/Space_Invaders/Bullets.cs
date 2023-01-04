@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Space_Invaders
 {
@@ -164,6 +165,7 @@ namespace Space_Invaders
                         //squad.Aliens.Remove(alien);
                         bullet.DeleteBullet();
                         _scoreAlien += 100;
+                        File.WriteAllText("C:/Users/Ahmad/Documents/GitHub/space-invader/Space_Invaders/Space_Invaders/scores.txt", _scoreAlien .ToString());
                         bullets.Add(bullet);
                         _colision = true;
                     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Space_Invaders
 {
@@ -157,7 +158,7 @@ namespace Space_Invaders
                 Console.Clear();
                 TheTitle();
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(Game._lastScore);
+
                 Console.WriteLine(play);
                 Console.WriteLine(SON);
                 Console.WriteLine(DIFFICULTE);
@@ -181,7 +182,9 @@ namespace Space_Invaders
 
                     case 4:
                         Console.Clear();
-                        Console.WriteLine(SCORES + " " + "\n\n\t\t\t\t\t\t\t\t\t");
+                        string scores = File.ReadAllText("C:/Users/Ahmad/Documents/GitHub/space-invader/Space_Invaders/Space_Invaders/scores.txt");
+
+                        Console.WriteLine(SCORES + " " + "\n\n\t\t\t\t\t\t\t\t\t" + scores);
                         Console.ReadKey();
                         break;
 

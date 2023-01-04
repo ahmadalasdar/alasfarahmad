@@ -84,12 +84,12 @@ namespace Space_Invaders
         /// <summary>
         /// les Scores
         /// </summary>
-        private static int _scores;
+        private int _scores;
 
         /// <summary>
         /// Getting Setting 
         /// </summary>
-        public static int Scores { get => _scores; set => _scores = value; }
+        public int Scores { get => _scores; set => _scores = value; }
 
         /// <summary>
         /// Constante de string (En pause)
@@ -139,8 +139,6 @@ namespace Space_Invaders
 
         public const int MAXHEARTS = 3;
 
-
-        public static int _lastScore;
 
 
         /// <summary>
@@ -265,7 +263,6 @@ namespace Space_Invaders
                 if(playerHearts == 0)
                 {
                     DysplayInfosIfHeroIsDied();
-                    _lastScore += Scores;
                     break;
                     
                 }
@@ -392,7 +389,6 @@ namespace Space_Invaders
 
             }else if(theKey.Key == ConsoleKey.Enter)
             {
-                _lastScore = Scores;
                 play.PrancipalMenu();
             }
 
