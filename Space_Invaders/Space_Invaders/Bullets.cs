@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// ETML 
+/// Auteur : Alasfar Ahmad
+/// Space Invaders
+/// Date : 04.01.2023
+/// Class Bullets : classe qui a les listes des bullets et les methodes de les afficher
+/// et des methodes pour verifier les colisions de ces bullets
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,12 +21,21 @@ namespace Space_Invaders
         /// </summary>
         private List<Bullet> _bullets = new List<Bullet>();
 
+        /// <summary>
+        /// liste des aliens
+        /// </summary>
         private List<Alien> _aliens = new List<Alien>();
 
         //private Squad Squad = new Squad(10);
 
+        /// <summary>
+        /// le scores
+        /// </summary>
         private int _scoreAlien ;
 
+        /// <summary>
+        /// Getting Setting des scores
+        /// </summary>
         public int ScoreAlien { get => _scoreAlien; set => _scoreAlien = value; }
 
         /// <summary>
@@ -32,7 +48,7 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// Constructor
+        /// deuxieme constructor avec parametre
         /// </summary>
         public Bullets(List<Bullet> bullets)
         {
@@ -56,7 +72,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// méthode pour dessiner les bullets
+        /// méthode pour dessiner les bullets des aliens
         /// </summary>
         public void DrawDownBullets()
         {
@@ -80,7 +96,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// méthode pour supprimer un bullet les bullets
+        /// méthode pour supprimer un bullet
         /// </summary>
         public void DeleteOneBullet()
         {
@@ -132,7 +148,7 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// méthode pour ajouter les bullets à la liste
+        /// méthode pour ajouter les bullets à la liste avec des parametres
         /// </summary>
         public void AddBullet(int X, int Y, int direction)
         {
@@ -144,6 +160,7 @@ namespace Space_Invaders
         /// Méthode pour vérifier le touche des bullets aux Aliens
         /// </summary>
         /// <param name="aliens"> la liste des aliens </param>
+        /// <returns> True or False </returns>
         public bool CheckBulletCollision(Squad aliens)
         {
             List<Alien> _aliens = new List<Alien>();
@@ -184,7 +201,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// Methode pour retourner le scores
         /// </summary>
         /// <returns></returns>
         public int Get_theScore()
@@ -192,6 +209,11 @@ namespace Space_Invaders
             return ScoreAlien;
         }
 
+        /// <summary>
+        /// Methode qui fait la verification de colision (si les aliens touche le canon)
+        /// </summary>
+        /// <param name="ship"> le Canon </param>
+        /// <returns> True or False </returns>
         public bool CheckAliensBulletsColision(Canon ship)
         {
             bool _colisionCanon = false;

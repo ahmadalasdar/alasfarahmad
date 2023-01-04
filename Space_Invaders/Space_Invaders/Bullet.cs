@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// ETML 
+/// Auteur : Alasfar Ahmad
+/// Space Invaders
+/// Date : 04.01.2023
+/// Class Bullet : classe qui a des methode de bullet avec les symboles et les methodes
+/// de dessin des bullet de canon et des aliens
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +17,7 @@ namespace Space_Invaders
     {
 
         /// <summary>
-        /// 
+        /// le symbol de bullet du canon
         /// </summary>
         private static char[] _symbol = new char[2]                // tableau du symbole
         {       '|',
@@ -19,7 +26,7 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// 
+        /// le symbol de bullet pour les aliens
         /// </summary>
         private static char[] _downSymbol = new char[2]                // tableau du symbole
         {       ' ',
@@ -35,13 +42,23 @@ namespace Space_Invaders
                 ' '
         };
 
-        private int _y;                 // La position Y du Shoot
+        /// <summary>
+        /// La position Y du Shoot
+        /// </summary>
+        private int _y;
+
+        /// <summary>
+        /// La position X du Shoot
+        /// </summary>
         private int _x;
 
+        /// <summary>
+        /// la direction
+        /// </summary>
         public int _direction = 1;
 
         /// <summary>
-        /// 
+        /// Constrocteur 
         /// </summary>
         /// <param name="X"></param>
         /// <param name="Y"></param>
@@ -52,7 +69,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        ///  deuxieme constrocteur
         /// </summary>
         /// <param name="X"></param>
         /// <param name="Y"></param>
@@ -64,7 +81,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// Getting Setting de la position Y du Shoot
         /// </summary>
         public int Y
         {
@@ -73,7 +90,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// Getting Setting de la position X du Shoot
         /// </summary>
         public int X
         {
@@ -82,7 +99,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// Getting Setting du symbol
         /// </summary>
         public char[] Symbol
         {
@@ -91,7 +108,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// Methode qui fait dessiner le bullet
         /// </summary>
         public void DrawBullet()
         {
@@ -103,7 +120,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// Methode qui fait supprimer le bullet
         /// </summary>
         public void DeleteBullet()
         {
@@ -115,7 +132,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// Methode qui fait bouger le bullet
         /// </summary>
         public void MoveBullet()
         {
@@ -124,7 +141,7 @@ namespace Space_Invaders
 
 
         /// <summary>
-        /// 
+        /// Methode qui fait dessiner le bullet des aliens
         /// </summary>
         public void DrawDownBullet()
         {

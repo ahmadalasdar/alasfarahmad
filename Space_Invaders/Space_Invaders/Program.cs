@@ -1,4 +1,10 @@
-﻿using System;
+﻿/// ETML 
+/// Auteur : Alasfar Ahmad
+/// Space Invaders
+/// Date : 04.01.2023
+/// class Program principale
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,12 +19,12 @@ namespace Space_Invaders
             Console.CursorVisible = true;
             Console.SetWindowSize(145, 40);
 
-            MenuOption test = new MenuOption();
+            MenuOption theGame = new MenuOption();
 
 
-            // tester le titre et le menu
+            // Commencer cette application
 
-            test.PrancipalMenu();
+            theGame.PrancipalMenu();
             Console.ReadLine();
 
 

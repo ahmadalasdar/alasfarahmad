@@ -1,4 +1,10 @@
-﻿using System;
+﻿/// ETML 
+/// Auteur : Alasfar Ahmad
+/// Space Invaders
+/// Date : 04.01.2023
+/// Class Game : Classe qui a des methode du jeu
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +16,7 @@ namespace Space_Invaders
     public class Game
     {
         /// <summary>
-        /// 
+        /// istancier objet MenuOption
         /// </summary>
         private MenuOption play;
 
@@ -57,17 +63,17 @@ namespace Space_Invaders
         public const int MIN_X = 0;
 
         /// <summary>
-        /// 
+        /// la vitesse du bullet en mode difficile
         /// </summary>
         private int _bulletSpeed = 1;
 
         /// <summary>
-        /// 
+        /// la limite du bullet en mode difficile
         /// </summary>
         private int _bulletLimit = 1;
 
         /// <summary>
-        /// 
+        /// la vitesse des aliens
         /// </summary>
         private int _alienSpeed = 5;
 
@@ -87,7 +93,7 @@ namespace Space_Invaders
         private int _scores;
 
         /// <summary>
-        /// Getting Setting 
+        /// Getting Setting Scores
         /// </summary>
         public int Scores { get => _scores; set => _scores = value; }
 
@@ -119,6 +125,9 @@ namespace Space_Invaders
                                                                
         ";
 
+        /// <summary>
+        /// onstante de string (Bravo)
+        /// </summary>
         private const string BRAVO = @"
             
    
@@ -136,7 +145,9 @@ namespace Space_Invaders
         /// </summary>
         public int _level = 1;
 
-
+        /// <summary>
+        /// nombre max des vies
+        /// </summary>
         public const int MAXHEARTS = 3;
 
 
@@ -366,7 +377,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// 
+        /// Methode qui affiche Game Over si le jeueur a perdu les 3 vies avec deux choix (Escape, Enter)
         /// </summary>
         public void DysplayInfosIfHeroIsDied()
         {

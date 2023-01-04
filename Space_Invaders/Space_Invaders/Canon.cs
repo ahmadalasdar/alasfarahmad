@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// ETML 
+/// Auteur : Alasfar Ahmad
+/// Space Invaders
+/// Date : 04.01.2023
+/// Class Canon : Classe qui a des methode de Canon avec le symbole et les methodes
+/// pour les afficher et supprimer
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

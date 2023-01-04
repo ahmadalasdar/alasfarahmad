@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// ETML 
+/// Auteur : Alasfar Ahmad
+/// Space Invaders
+/// Date : 04.01.2023
+/// Class MenuOption : Classe qui a des methode de deplacement et des methodes
+/// pour afficher le Menu et les sous-menu
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,12 +26,7 @@ namespace Space_Invaders
         }
 
         /// <summary>
-        /// des variables (attributs)
         /// play
-        /// son
-        /// difficulté
-        /// scores
-        /// exit?
         /// </summary>
         private const string play = @"     
 
@@ -35,7 +37,7 @@ namespace Space_Invaders
         ";
 
         /// <summary>
-        /// 
+        /// Son
         /// </summary>
         private const string SON = @" 
                                                      ___ ___  _ _  
@@ -44,7 +46,7 @@ namespace Space_Invaders
         ";
 
         /// <summary>
-        /// 
+        /// DIFFICULTE
         /// </summary>
         private const string DIFFICULTE = @"
                                                         _  _   __   __  _            _  _   
@@ -54,7 +56,7 @@ namespace Space_Invaders
         ";
 
         /// <summary>
-        /// 
+        /// SCORES
         /// </summary>
         private const string SCORES = @"          
 
@@ -64,7 +66,7 @@ namespace Space_Invaders
         ";
 
         /// <summary>
-        /// 
+        /// EXIT
         /// </summary>
         private const string EXIT = @"
                                                                _  _     ___    
@@ -74,7 +76,7 @@ namespace Space_Invaders
         ";
 
         /// <summary>
-        /// 
+        /// EASY
         /// </summary>
         private const string EASY = @"
                                                       __            _  _      
@@ -85,7 +87,7 @@ namespace Space_Invaders
         ";
 
         /// <summary>
-        /// 
+        /// HARD
         /// </summary>
         private const string HARD = @"
                                                      ___   _   __   __  _      _  _      
@@ -96,7 +98,7 @@ namespace Space_Invaders
         ";
 
         /// <summary>
-        /// 
+        /// BACK
         /// </summary>
         private const string BACK = @"                 
                                                      _           _   
@@ -106,23 +108,53 @@ namespace Space_Invaders
         ";
 
         /// <summary>
-        /// 
+        /// ON
         /// </summary>
-        public int cursorY = 10;                // Position de Y pour le cursor 
+        private const string ON = @"
+
+                                                     _____ _   _ 
+                                                    |  _  | \ | |
+                                                    | | | |  \| |
+                                                    | | | | . ` |
+                                                    \ \_/ / |\  |
+                                                     \___/\_| \_/
+        ";
 
         /// <summary>
-        /// 
+        /// OFF
         /// </summary>
-        public int cursorX = 35;                // Position de X pour le cursor
+        private const string OFF = @"
+                                                     _________________ 
+                                                    |  _  |  ___|  ___|
+                                                    | | | | |_  | |_   
+                                                    | | | |  _| |  _|  
+                                                    \ \_/ / |   | |    
+                                                     \___/\_|   \_|    
+        ";
 
         /// <summary>
-        /// 
+        /// Position de Y pour le cursor 
         /// </summary>
-        private static int _difficulty = 1;                // the selected difficulty
+        public int cursorY = 10;
+
+        /// <summary>
+        /// Position de X pour le cursor
+        /// </summary>
+        public int cursorX = 35;
+
+        /// <summary>
+        /// the selected difficulty
+        /// </summary>
+        private static int _difficulty = 1;
+
+        /// <summary>
+        /// the selected son
+        /// </summary>
+        private static int _son = 2;
 
 
         /// <summary>
-        /// 
+        /// istancier game
         /// </summary>
         Game game = new Game();                 // objet game
 
@@ -174,6 +206,7 @@ namespace Space_Invaders
 
                     case 2:
                         Console.Clear();
+                        MenuSon();
                         break;
 
                     case 3:
@@ -439,7 +472,9 @@ namespace Space_Invaders
 
         }
 
-
+        /// <summary>
+        /// Methode qui appelle la methode de jeu depuis le menu si on tape sur play
+        /// </summary>
         public void Play()
         {
             // nettoyer
@@ -466,6 +501,152 @@ namespace Space_Invaders
 
             game.StartGame();
             
+
+
+
+        }
+
+
+        /// <summary>
+        /// méthode pour la page de son avec le déplacement
+        /// </summary>
+        public void MenuSon()
+        {
+            int Y = 10;                // Position de Y pour le cursor de Sous-Menu
+            int X = 35;                // Position de X pour le cursor de Sous-Menu
+            while (true)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine(SON);
+
+                Console.WriteLine("");
+
+                // la valeur de son soit 1 
+                if (_son == 1)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                }
+
+                Console.WriteLine(ON);
+
+                // soit 2
+                if (_son == 2)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                Console.WriteLine(OFF);
+
+                Console.SetCursorPosition(25, 30);
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine(BACK);
+
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.SetCursorPosition(X, Y);
+                Console.Write("==>");
+
+
+                ConsoleKeyInfo theKey = Console.ReadKey(true);
+
+                // si on tape sur la flèche de bas
+                if (theKey.Key == ConsoleKey.DownArrow)
+                {
+                    // si y est plus que 10 on bloque
+                    if (Y > 32)
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
+                    // sinon on descend
+                    else if (Y == 19)
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("   ");
+                        Y += 14;
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("   ");
+                        Y += 9;
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
+                }
+
+                // si on tape sur la flèche de haut
+                if (theKey.Key == ConsoleKey.UpArrow)
+                {
+                    // si y est moins que 11 on bloque
+                    if (Y < 11)
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
+                    else if (Y == 33)
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("   ");
+                        Y -= 14;
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
+                    // sinon on monte
+                    else
+                    {
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("   ");
+                        Y -= 9;
+                        Console.SetCursorPosition(X, Y);
+                        Console.Write("==>");
+                    }
+                }
+
+                // si je presse Enter dans la page de son
+                switch (Y)
+                {
+                    case 10:
+                        if (theKey.Key == ConsoleKey.Enter && Y == 10)
+                        {
+
+                            _son = 1;
+                        }
+
+                        break;
+
+                    case 19:
+                        if (theKey.Key == ConsoleKey.Enter && Y == 19)
+                        {
+
+                            _son = 2;
+                        }
+                        break;
+                    case 33:
+                        if (theKey.Key == ConsoleKey.Enter && Y == 33)
+                        {
+                            Console.SetCursorPosition(cursorX, cursorY);
+                            Console.Clear();
+                            return;
+                        }
+                        break;
+
+
+                }
+
+            }
 
 
 

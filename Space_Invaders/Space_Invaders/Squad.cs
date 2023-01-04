@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// ETML 
+/// Auteur : Alasfar Ahmad
+/// Space Invaders
+/// Date : 04.01.2023
+/// Class Aliens : Classe qui a des methode des aliens avec des listes des aliens et les methodes
+/// pour les afficher et supprimer
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
