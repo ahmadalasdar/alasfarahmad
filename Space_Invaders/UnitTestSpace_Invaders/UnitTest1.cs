@@ -53,11 +53,11 @@ namespace UnitTestSpace_Invaders
         public void TestIfTheShootToucheTheAlien()
         {
             //Act
-            Aliens firestAlien = new Aliens();
+            Alien firestAlien = new Alien(10,10);
 
-            Bullet shipBullet = new Shoot();
+            Bullet shipBullet = new Bullet(50,20);
 
-            shipBullet.Y += 10;
+            shipBullet.Y -= 10;
 
 
             //Assert
@@ -73,12 +73,12 @@ namespace UnitTestSpace_Invaders
         public void TestIfTheCanonWasHit()
         {
 
-            Canon myCanon = new Canon();
-            Bullet alienBullet = new Shoot();
+            Canon myCanon = new Canon(50,30);
+            Bullet alienBullet = new Bullet(50,25);
 
             alienBullet.Y += 5;
 
-            Assert.AreEqual(alienBullet.Y,myCanon);
+            Assert.AreEqual(alienBullet.Y,myCanon.Y);
         }
 
 
