@@ -10,6 +10,12 @@ namespace Space_Invaders
     public class Game
     {
         /// <summary>
+        /// 
+        /// </summary>
+        private MenuOption play;
+
+        
+        /// <summary>
         /// Getting et Setting le nom du joueur
         /// </summary>
         public string name { get; set; }
@@ -50,9 +56,19 @@ namespace Space_Invaders
         /// </summary>
         public const int MIN_X = 0;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private int _bulletSpeed = 1;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private int _bulletLimit = 1;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private int _alienSpeed = 5;
 
         /// <summary>
@@ -68,12 +84,12 @@ namespace Space_Invaders
         /// <summary>
         /// les Scores
         /// </summary>
-        private int _scores;
+        private static int _scores;
 
         /// <summary>
         /// Getting Setting 
         /// </summary>
-        public int Scores { get => _scores; set => _scores = value; }
+        public static int Scores { get => _scores; set => _scores = value; }
 
         /// <summary>
         /// Constante de string (En pause)
@@ -124,6 +140,9 @@ namespace Space_Invaders
         public const int MAXHEARTS = 3;
 
 
+        public static int _lastScore;
+
+
         /// <summary>
         /// méthoder pour afficher le board
         /// </summary>
@@ -147,6 +166,8 @@ namespace Space_Invaders
         /// </summary>
         public void StartGame()
         {
+            play = new MenuOption();
+
             if(MenuOption.Difficulty == 2)
             {
                 _bulletSpeed = 5;
@@ -239,6 +260,14 @@ namespace Space_Invaders
                     _aliens = new Squad(10);
                     _aliens.DrawAliens();
 
+                }
+
+                if(playerHearts == 0)
+                {
+                    DysplayInfosIfHeroIsDied();
+                    _lastScore += Scores;
+                    break;
+                    
                 }
                 
 
@@ -336,6 +365,37 @@ namespace Space_Invaders
             }
             Console.SetCursorPosition(120, 3);
             Console.WriteLine("Life : " + hearts);
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DysplayInfosIfHeroIsDied()
+        {
+            Console.Clear();
+            Console.WriteLine(GAMEOVER);
+            Console.WriteLine("\t\t\t\t\tAppuyer sur Enter pour revenir au Menu ou Escape pour fermer le jeu");
+            ConsoleKeyInfo theKey;
+
+            do
+            {
+                theKey = Console.ReadKey(true);
+
+
+
+            } while (theKey.Key != ConsoleKey.Escape && theKey.Key != ConsoleKey.Enter);
+
+            if(theKey.Key == ConsoleKey.Escape)
+            {
+                Environment.Exit(0);
+
+            }else if(theKey.Key == ConsoleKey.Enter)
+            {
+               
+                play.PrancipalMenu();
+            }
+
 
         }
 

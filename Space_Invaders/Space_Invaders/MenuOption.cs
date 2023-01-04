@@ -8,12 +8,13 @@ namespace Space_Invaders
 {
     public class MenuOption
     {
+
         /// <summary>
         /// Default constroctor
         /// </summary>
         public MenuOption()
         {
-
+            
         }
 
         /// <summary>
@@ -128,7 +129,6 @@ namespace Space_Invaders
 
 
 
-
         /// <summary>
         /// methode qui affiche le titre
         /// </summary>
@@ -181,7 +181,7 @@ namespace Space_Invaders
 
                     case 4:
                         Console.Clear();
-                        Console.Write(SCORES);
+                        Console.WriteLine(SCORES + " " + "\n\n\t\t\t\t\t\t\t\t\t" + _lastScoree);
                         Console.ReadKey();
                         break;
 
