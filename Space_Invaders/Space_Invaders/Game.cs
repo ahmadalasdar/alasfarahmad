@@ -18,7 +18,7 @@ namespace Space_Invaders
         /// <summary>
         /// istancier objet MenuOption
         /// </summary>
-        private MenuOption play;
+        private static MenuOption play;
 
         
         /// <summary>
@@ -392,7 +392,7 @@ namespace Space_Invaders
         /// <summary>
         /// Methode qui affiche Game Over si le jeueur a perdu les 3 vies avec deux choix (Escape, Enter)
         /// </summary>
-        public void DysplayInfosIfHeroIsDied()
+        public static void DysplayInfosIfHeroIsDied()
         {
             Console.Clear();
             Console.WriteLine(GAMEOVER);

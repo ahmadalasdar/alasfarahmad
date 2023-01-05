@@ -157,6 +157,10 @@ namespace Space_Invaders
                     _direction = 1;
                     _moveDown = true;
                 }
+                else if(_aliens[_aliens.Count() -1].Y + _aliensLingth == 35)
+                {
+                    Game.DysplayInfosIfHeroIsDied();
+                }
                 else
                 {
 
