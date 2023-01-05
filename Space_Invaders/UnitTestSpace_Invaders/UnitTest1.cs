@@ -32,16 +32,16 @@ namespace UnitTestSpace_Invaders
         {
             //Act
 
-            Wall test2 = new Wall();
+            Wall test2 = new Wall(1,15,30);
 
 
-            test2.Life--;
+            test2.LifePoints --;
 
 
 
             //Assert
 
-            Assert.AreEqual(1, test2.Life);
+            Assert.AreEqual(1, test2.LifePoints);
 
         }
 
