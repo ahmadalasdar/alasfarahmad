@@ -37,6 +37,7 @@ namespace Space_Invaders
         /// Getting Setting des scores
         /// </summary>
         public int ScoreAlien { get => _scoreAlien; set => _scoreAlien = value; }
+        public List<Bullet> BulletsList { get => _bullets; set => _bullets = value; }
 
         /// <summary>
         /// default constructor
@@ -161,7 +162,7 @@ namespace Space_Invaders
         /// </summary>
         /// <param name="aliens"> la liste des aliens </param>
         /// <returns> True or False </returns>
-        public bool CheckBulletCollision(Squad aliens)
+        public bool CheckBulletCollision(Squad aliens, List<Wall> wallList)
         {
             List<Alien> _aliens = new List<Alien>();
 
@@ -169,17 +170,31 @@ namespace Space_Invaders
 
             bool _colision = false;
 
-
+            bool founded = false;
             foreach (Bullet bullet in _bullets)
             {
+
+                foreach (Wall wall in wallList)
+                {
+                    // Regarde si un mur a eu contact avec un tir et que le mur est encore en vie
+                    if ((bullet.X >= wall.X && bullet.X < wall.X + 15) && (bullet.Y -7) <= wall.Y && wall.LifePoints != 0)
+                    {
+
+                            Game.DisplayWall(wallList);
+                            bullet.DeleteBullet();
+                            bullets.Add(bullet);
+                            founded = true;
+                            break;
+                    }
+                }
+
                 foreach (Alien alien in aliens.Aliens)
                 {
 
-                    if (bullet.X > alien.X && bullet.X < alien.X + 13 && bullet.Y <= alien.Y + 5 && bullet.Y >= alien.Y)
+                    if (bullet.X > alien.X && bullet.X < alien.X + 13 && bullet.Y <= alien.Y + 5 && bullet.Y >= alien.Y && _colision == false)
                     {
                         alien.DeleteAlien();
                         _aliens.Add(alien);
-                        //squad.Aliens.Remove(alien);
                         bullet.DeleteBullet();
                         _scoreAlien += 100;
                         File.WriteAllText("C:/Users/Ahmad/Documents/GitHub/space-invader/Space_Invaders/Space_Invaders/scores.txt", _scoreAlien .ToString());
@@ -187,6 +202,8 @@ namespace Space_Invaders
                         _colision = true;
                     }
                 }
+                
+
             }
             
             foreach (Alien alien1 in _aliens)
@@ -214,7 +231,7 @@ namespace Space_Invaders
         /// </summary>
         /// <param name="ship"> le Canon </param>
         /// <returns> True or False </returns>
-        public bool CheckAliensBulletsColision(Canon ship)
+        public bool CheckAliensBulletsColision(Canon ship, List<Wall> wallList)
         {
             bool _colisionCanon = false;
 
@@ -235,6 +252,38 @@ namespace Space_Invaders
                     bullets.Add(bullet);
                     _colisionCanon = true;
                 }
+                bool founded = false;
+                foreach (Wall wall in wallList)
+                {
+                    // Regarde si un mur a eu contact avec un tir et que le mur est encore en vie
+                    if ((bullet.X >= wall.X && bullet.X < wall.X + 15) && wall.Y == bullet.Y && wall.LifePoints != 0)
+                    {
+
+                        // Regarde si le tir vient du joueur ou de l'ennemi
+                        if (bullet._direction < 0)
+                        {
+                            wall.LifePoints--;
+                            Game.DisplayWall(wallList);
+                            _bullets.Remove(bullet);
+                            founded = true;
+                            break;
+                        }
+                        else
+                        {
+                            Game.DisplayWall(wallList);
+                            _bullets.Remove(bullet);
+                            founded = true;
+                            break;
+                        }
+                    }
+                }
+                if (founded)
+                {
+                    founded = false;
+                    break;
+                }
+
+
             }
             foreach (Bullet bullet in bullets)
             {

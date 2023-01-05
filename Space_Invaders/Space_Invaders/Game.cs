@@ -177,7 +177,20 @@ namespace Space_Invaders
         {
             play = new MenuOption();
 
-            if(MenuOption.Difficulty == 2)
+            // creer les murs
+            List<Wall> wallList = new List<Wall>();
+            for (int i = 0; i < 6; i++)
+            {
+                Wall wall = new Wall(id: i, x: i * 25 + 3, y: 41);
+
+                wallList.Add(wall);
+
+            }
+            DisplayWall(wallList);
+
+
+
+            if (MenuOption.Difficulty == 2)
             {
                 _bulletSpeed = 5;
                 _alienSpeed = 3;
@@ -241,14 +254,14 @@ namespace Space_Invaders
                 if (_counter++ % _alienSpeed == 0)
                 {
                     _aliens.DeplacementAliens();
-                    if (_bullets.CheckBulletCollision(_aliens))
+                    if (_bullets.CheckBulletCollision(_aliens,wallList))
                     {
                         DrawBoard();
 
                     }
 
                 }
-                if (_aliens.Bullets.CheckAliensBulletsColision(_ship))
+                if (_aliens.Bullets.CheckAliensBulletsColision(_ship,wallList))
                 {
                     playerHearts--;
                     DrawBoard();
@@ -404,6 +417,98 @@ namespace Space_Invaders
             }
 
 
+        }
+
+        /// <summary>
+        /// Affiche les murs dans la console
+        /// </summary>
+        /// <param name="wallList"> La liste des murs </param>
+        public static void DisplayWall(List<Wall> wallList)
+        {
+
+            // Regarde tous les murs présents dans la liste
+            foreach (Wall wall in wallList)
+            {
+
+                // Regarde selon le nombre de point de vie du mur
+                switch (wall.LifePoints)
+                {
+                    case 0:
+                        wall.Symbole = "               ";
+                        break;
+                    case 1:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        break;
+                    case 2:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        break;
+                    case 3:
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        break;
+                    case 4:
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        break;
+                    case 5:
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        break;
+                    case 6:
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        break;
+
+                }
+
+
+                Console.SetCursorPosition(wall.X, wall.Y);
+                Console.WriteLine(wall.Symbole);
+                Console.ForegroundColor = ConsoleColor.White;
+
+
+
+            }
+
+        }
+
+
+        /// <summary>
+        /// Regarde si un tir a eu contact avec un mur
+        /// </summary>
+        /// <param name="wallList"> Liste des murs </param>
+        /// <param name="bulletList"> Liste des tirs</param>
+        private void CheckBulletColisionWithWall(List<Wall> wallList, List<Bullet> bulletList)
+        {
+            bool founded = false;
+            foreach (Bullet bullet in bulletList)
+            {
+                foreach (Wall wall in wallList)
+                {
+                    // Regarde si un mur a eu contact avec un tir et que le mur est encore en vie
+                    if ((bullet.X >= wall.X && bullet.X < wall.X + 15) && wall.Y == bullet.Y && wall.LifePoints != 0)
+                    {
+
+                        // Regarde si le tir vient du joueur ou de l'ennemi
+                        if (bullet._direction < 1)
+                        {
+                            wall.LifePoints--;
+                            DisplayWall(wallList);
+                            bulletList.Remove(bullet);
+                            founded = true;
+                            break;
+                        }
+                        else
+                        {
+                            DisplayWall(wallList);
+                            bulletList.Remove(bullet);
+                            founded = true;
+                            break;
+                        }
+                    }
+                }
+                if (founded)
+                {
+                    founded = false;
+                    break;
+                }
+            }
         }
 
 
