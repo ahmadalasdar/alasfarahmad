@@ -16,7 +16,7 @@ namespace Space_Invaders
     {
         static void Main(string[] args)
         {
-            Console.CursorVisible = true;
+            Console.CursorVisible = false;
             Console.SetWindowSize(145, 40);
 
             MenuOption theGame = new MenuOption();
