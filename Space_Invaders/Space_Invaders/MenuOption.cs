@@ -215,7 +215,7 @@ namespace Space_Invaders
 
                     case 4:
                         Console.Clear();
-                        string scores = File.ReadAllText("C:\Users\pc32cah\Documents\GitHub\space-invader\Space_Invaders\Space_Invaders/scores.txt");
+                        string scores = File.ReadAllText("C:/Users/pc32cah/Documents/GitHub/space-invader/Space_Invaders/Space_Invaders/scores.txt");
 
                         Console.WriteLine(SCORES + " " + "\n\n\t\t\t\t\t\t\t\t\t" + scores);
                         Console.ReadKey();
