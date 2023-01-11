@@ -18,7 +18,7 @@ namespace Space_Invaders
         /// <summary>
         /// istancier objet MenuOption
         /// </summary>
-        private static MenuOption play;
+        private static MenuOption _play;
 
         
         /// <summary>
@@ -175,7 +175,7 @@ namespace Space_Invaders
         /// </summary>
         public void StartGame()
         {
-            play = new MenuOption();
+            _play = new MenuOption();
 
             // creer les murs
             List<Wall> wallList = new List<Wall>();
@@ -413,7 +413,7 @@ namespace Space_Invaders
 
             }else if(theKey.Key == ConsoleKey.Enter)
             {
-                play.PrancipalMenu();
+                _play.PrancipalMenu();
             }
 
 

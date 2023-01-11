@@ -50,19 +50,23 @@ namespace Space_Invaders
         
 
         /// <summary>
-        /// 
+        /// Getting List Aliens
         /// </summary>
         public List<Alien> Aliens { get => _aliens; set => _aliens = value; }
-        public Bullets Bullets { get => _bullets; set => _bullets = value; }
+
 
         /// <summary>
-        /// 
+        /// Random
         /// </summary>
         private Random _random = new Random();
 
 
-
+        /// <summary>
+        /// istancier objet bullets
+        /// </summary>
         private Bullets _bullets = new Bullets();
+
+        public Bullets Bullets { get => _bullets; set => _bullets = value; }
 
         /// <summary>
         /// Constroctur qui ajoute chaque alien à la liste
