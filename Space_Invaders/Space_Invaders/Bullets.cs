@@ -197,7 +197,7 @@ namespace Space_Invaders
                         _aliens.Add(alien);
                         bullet.DeleteBullet();
                         _scoreAlien += 100;
-                        File.WriteAllText("C:/Users/pc32cah/Documents/GitHub/space-invader/Space_Invaders/Space_Invaders/scores.txt", _scoreAlien .ToString());
+                        File.WriteAllText("../../scores.txt", _scoreAlien .ToString());
                         bullets.Add(bullet);
                         _colision = true;
                     }
